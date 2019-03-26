@@ -1,0 +1,10 @@
+﻿@model IEnumerable<ZiWatchVer3.Models.NHASANXUAT>
+
+@foreach(var item in Model)
+{
+    <li class="p-b-6">
+        <a class="filter-link stext-106 trans-04" href="@Url.Action("ForSupplier","Product", new { id=item.MANHASANXUAT })" >
+            @item.TENNHASANXUAT
+        </a>
+    </li>
+}

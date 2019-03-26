@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ZiWatchVer3.Models.MAUSAC>
+
+@foreach (var item in Model)
+{
+    <li class="p-b-6">
+        <span class="fs-15 lh-12 m-r-6" style="color: @item.MARGB;">
+            <i class="zmdi zmdi-circle"></i>
+        </span>
+        <a href="@Url.Action("ForColor","Product",new { id=item.MAMAU })" class="filter-link stext-106 trans-04">
+            @item.TENMAU
+        </a>
+    </li>
+}
