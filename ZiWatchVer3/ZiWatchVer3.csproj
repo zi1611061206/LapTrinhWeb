@@ -205,6 +205,8 @@
     <Content Include="images\contact04.png" />
     <Content Include="images\contact05.png" />
     <Content Include="images\contact06.png" />
+    <Content Include="images\my-icons\background.jpg" />
+    <Content Include="images\my-icons\background2.png" />
     <Content Include="images\my-icons\LOGOCHUNHAT-DOBONG1.png" />
     <Content Include="images\my-icons\ZIwatch.png" />
     <Content Include="images\product-01.jpg" />

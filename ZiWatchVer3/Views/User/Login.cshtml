@@ -3,28 +3,75 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
 }
+<style>
+    .bodyLogin {
+        background-image: url('../../images/my-icons/background2.png');
+        margin-bottom: 0;
+        overflow: auto;
+    }
 
-<br /><br /><br /><br /><br />
-<div class="container">
-    <h4 style="color: red; text-align: center">@ViewBag.Thongbao</h4>
-    <table>
-        <h3>ĐĂNG NHẬP</h3>
-        @using (Html.BeginForm())
-        {
-            @Html.ValidationSummary(true)
-            <tr style="height: 40px">
-                <td>Email: </td>
-                <td>@Html.TextBox("Email") @ViewData["Loi1"]</td>
-            </tr>
-            <tr style="height: 40px">
-                <td>Mật khẩu: </td>
-                <td>@Html.Password("Password") @ViewData["Loi2"]</td>
-            </tr>
-            <tr style="height: 40px">
-                <td></td>
-                <td> <input type="submit" value="Đăng nhập" </td>
-            </tr>
+    .login {
+        background-color: #c1c1c1;
+        margin: 20px 30% 30px 30%;
+        width: 500px;
+        height: 270px;
+        border-radius: 10%;
+        padding-top: 30px;
+        color: black;
+        opacity: 0.9;
+        overflow: auto;
+        resize: vertical;
+    }
+
+    table {
+        margin: 10px 18% 10px 22%;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+    }
+
+        .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
         }
-    </table>
+</style>
+
+<br /><br /><br /><br />
+<div class="container">
+    <div class="bodyLogin">
+        <div class="login">
+            <h4 style="color: red; text-align: center">@ViewBag.Thongbao</h4>
+            <table>
+                <h3 style="text-align: center">ĐĂNG NHẬP</h3>
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <tr style="height: 40px">
+                        <td>Email: </td>
+                        <td>@Html.TextBox("Email") @ViewData["Loi1"]</td>
+                    </tr>
+                    <tr style="height: 40px">
+                        <td>Mật khẩu: </td>
+                        <td>@Html.Password("Password") @ViewData["Loi2"]</td>
+                    </tr>
+                    <tr style="height: 40px">
+                        <td></td>
+                        <td> <input type="submit" class="button" value="Đăng nhập" </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
 </div>
 
