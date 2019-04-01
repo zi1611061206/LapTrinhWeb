@@ -2,36 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ZiWatchVer3.Models;
 
 namespace ZiWatchVer3.Models
 {
     public class TheOrder
     {
-        public int MaDonHang { get; set; }
+        dbQLDHDataContext data = new dbQLDHDataContext();
+
+        public int MaSanPham { get; set; }
 
         public string HinhAnh { get; set; }
 
         public string TenSanPham { get; set; }
 
-        public decimal DonGia { get; set; }
+        public double DonGia { get; set; }
 
-        public decimal SoLuong { get; set; }
-    }
+        public int SoLuong { get; set; }
 
-    public class ProductItems
-    {
-        public static List<TheOrder> lstProducts;
+        public double ThanhTien { get { return DonGia * SoLuong; } }
 
-        public List<TheOrder> GetProductItems
+        public TheOrder(int maSanPham)
         {
-            get
-            {
-                lstProducts = new List<TheOrder>();
-                lstProducts.Add(new TheOrder { MaDonHang = 1, HinhAnh = "PRODUCT1-1.jpg", TenSanPham = "CASIO 741", DonGia = 750000, SoLuong = 1 });
-                lstProducts.Add(new TheOrder { MaDonHang = 1, HinhAnh = "PRODUCT2-1.jpg", TenSanPham = "BENJAZZ 15", DonGia = 1020000, SoLuong = 2 });
-                return lstProducts;
-            }
+            MaSanPham = maSanPham;
+            SANPHAM dongHo = data.SANPHAMs.Single(n => n.MASANPHAM == MaSanPham);
+            TenSanPham = dongHo.TENSANPHAM;
+            HinhAnh = dongHo.HINHANH;
+            DonGia = double.Parse(dongHo.DONGIA.ToString());
+            SoLuong = 1;
         }
     }
-
 }

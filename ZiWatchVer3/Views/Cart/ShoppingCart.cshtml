@@ -1,8 +1,5 @@
 ﻿@using ZiWatchVer3.Models;
-@model IEnumerable<TheOrder>
-@{ProductItems productItems = new ProductItems(); }
-@{List<TheOrder> lstProducts = productItems.GetProductItems; }
-@{decimal totalPrice = 0;}
+@model List<TheOrder>
 @{
     ViewBag.Title = "Shopping Cart";
     Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
@@ -28,36 +25,27 @@
                         <div class="wrap-table-shopping-cart">
                             <table class="table-shopping-cart">
                                 <tr class="table_head">
-                                    <th class="column-1">Product</th>
+                                    <th class="column-1">Mã Sản Phẩm</th>
                                     <th class="column-2"></th>
-                                    <th class="column-3">Price</th>
-                                    <th class="column-4">Amount</th>
+                                    <th class="column-3">Tên Sản Phẩm</th>
+                                    <th class="column-4">Số Lượng</th>
+                                    <th class="column-5">Đơn Giá</th>
+                                    <th class="column-6">Thành Tiền</th>
                                 </tr>
-                                @foreach (TheOrder theOrder in lstProducts)
+                                @foreach (var item in Model)
                                 {
-                                    totalPrice += theOrder.DonGia * theOrder.SoLuong;
-                                    <tr class="table_row">
-                                        <td class="column-1">
-                                            <div class="how-itemcart1">
-                                                <img src="~/images/@theOrder.HinhAnh" alt="@theOrder.TenSanPham">
-                                            </div>
-                                        </td>
-                                        <td class="column-2">@theOrder.TenSanPham</td>
-                                        <td class="column-3">@theOrder.DonGia</td>
-                                        <td class="column-4">
-                                            <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                                                <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                    <i class="fs-16 zmdi zmdi-minus"></i>
-                                                </div>
-
-                                                <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="@theOrder.SoLuong">
-
-                                                <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                    <i class="fs-16 zmdi zmdi-plus"></i>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr class="table_row">
+                                    <td class="column-1">@item.MaSanPham</td>
+                                    <td class="column-2">
+                                        <div class="how-itemcart1">
+                                            <img src="~/images/@item.HinhAnh" alt="@item.TenSanPham">
+                                        </div>
+                                    </td>
+                                    <td class="column-3">@item.TenSanPham</td>
+                                    <td class="column-4">@item.SoLuong</td>
+                                    <td class="column-5">@String.Format("{0:0,0}", item.DonGia)</td>
+                                    <td class="column-6">@String.Format("{0:0,0}", item.ThanhTien)</td>
+                                </tr>
                                 }
                             </table>
                         </div>
@@ -88,13 +76,7 @@
                         <div class="flex-w flex-t bor12 p-b-13">
                             <div class="size-208">
                                 <span class="stext-110 cl2">
-                                    Subtotal:
-                                </span>
-                            </div>
-
-                            <div class="size-209">
-                                <span class="mtext-110 cl2">
-                                    @totalPrice
+                                    Tổng số sản phẩm: @ViewBag.Num
                                 </span>
                             </div>
                         </div>
@@ -102,13 +84,13 @@
                         <div class="flex-w flex-t p-t-27 p-b-33">
                             <div class="size-208">
                                 <span class="mtext-101 cl2">
-                                    Total:
+                                    Tổng tiền:
                                 </span>
                             </div>
 
                             <div class="size-209 p-t-1">
                                 <span class="mtext-110 cl2">
-                                    @totalPrice
+                                    @String.Format("{0:0,0}", ViewBag.Price)
                                 </span>
                             </div>
                         </div>

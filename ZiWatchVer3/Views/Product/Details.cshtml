@@ -16,9 +16,10 @@
     <!-- Custom styles for this template -->
     <link href="~/Content/simple-sidebar.css" rel="stylesheet">
     <style>
-        .p-b-14{
+        .p-b-14 {
             font-size: 28px;
         }
+
         .cl2 {
             font-size: 24px;
         }
@@ -81,6 +82,10 @@
                             <h4 class="stext-107 cl2 js-name-detail p-b-14">
                                 <b>@Model.TENSANPHAM</b>
                             </h4>
+
+                            <span class="stext-107 cl2">
+                                Mã: @Model.MASANPHAM
+                            </span><br>
 
                             <span class="stext-107 cl2">
                                 Giá: @Model.DONGIA
@@ -153,9 +158,12 @@
                                             </div>
                                         </div>
 
-                                        <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                            Add to cart
-                                        </button>
+                                        <div id="Datmua">
+                                            <a href="@Url.Action("AddCart", "Cart", new { @maSanPham=@Model.MaSanPham, @strURL=Request.Url.ToString() } )">
+                                                THÊM VÀO GIỎ HÀNG
+                                            </a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>

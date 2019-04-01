@@ -142,7 +142,6 @@
       <DependentUpon>dbQLDH.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\TheOrder.cs" />
-    <Compile Include="Models\VPCRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
