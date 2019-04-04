@@ -4,27 +4,16 @@
     Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Bootstrap core CSS -->
-    <link href="~/vendor/bootstrap2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="~/Content/simple-sidebar.css" rel="stylesheet">
-    <style>
-        .p-b-14 {
-            font-size: 28px;
-        }
+<style>
+    .p-b-14 {
+        font-size: 28px;
+    }
 
-        .cl2 {
-            font-size: 24px;
-        }
-    </style>
-</head>
+    .cl2 {
+        font-size: 24px;
+    }
+</style>
+
 <body>
     <br /><br />
     <section class="bg0 p-t-23 p-b-140">
@@ -72,98 +61,46 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-6 col-lg-5 p-b-30">
                         <div class="p-r-50 p-t-5 p-lr-0-lg">
-                            <h4 class="stext-107 cl2 js-name-detail p-b-14">
-                                <b>@Model.TENSANPHAM</b>
-                            </h4>
+                            <!--Info-->
+                            <div>
+                                <h4 class="stext-107 cl2 js-name-detail p-b-14">
+                                    <b>@Model.TENSANPHAM</b>
+                                </h4>
 
-                            <span class="stext-107 cl2">
-                                Mã: @Model.MASANPHAM
-                            </span><br>
+                                <span class="stext-107 cl2">
+                                    Mã: @Model.MASANPHAM
+                                </span><br>
 
-                            <span class="stext-107 cl2">
-                                Giá: @Model.DONGIA
-                            </span><br>
+                                <span class="stext-107 cl2">
+                                    Giá: @Model.DONGIA
+                                </span><br>
 
-                            <span class="stext-107 cl2">
-                                Loại máy: @Model.LOAIMAY
-                            </span><br>
+                                <span class="stext-107 cl2">
+                                    Loại máy: @Model.LOAIMAY
+                                </span><br>
 
-                            <span class="stext-107 cl2">
-                                Hình dạng mặt đồng hồ: @Model.MATDONGHO
-                            </span><br>
+                                <span class="stext-107 cl2">
+                                    Hình dạng mặt đồng hồ: @Model.MATDONGHO
+                                </span><br>
 
-                            <span class="stext-107 cl2">
-                                Dây đeo: @Model.DAYDEO
-                            </span><br>
+                                <span class="stext-107 cl2">
+                                    Dây đeo: @Model.DAYDEO
+                                </span><br>
+                            </div>
 
-                            <!-- Option -->
-                            <div class="p-t-33">
-                                <!-- Size -->
-                                <div class="flex-w flex-r-m p-b-10">
-                                    <div class="size-203 flex-c-m respon6">
-                                        Size
-                                    </div>
-
-                                    <div class="size-204 respon6-next">
-                                        <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
-                                                <option>Choose an option</option>
-                                                <option>24 mm</option>
-                                                <option>32 mm</option>
-                                                <option>36 mm</option>
-                                                <option>42 mm</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Color -->
-                                <div class="flex-w flex-r-m p-b-10">
-                                    <div class="size-203 flex-c-m respon6">
-                                        Color
-                                    </div>
-
-                                    <div class="size-204 respon6-next">
-                                        <div class="rs1-select2 bor8 bg0">
-                                            <select class="js-select2" name="time">
-                                                <option>Choose an option</option>
-                                                <option>Red</option>
-                                                <option>Blue</option>
-                                                <option>White</option>
-                                                <option>Grey</option>
-                                            </select>
-                                            <div class="dropDownSelect2"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Button -->
-                                <div class="flex-w flex-r-m p-b-10">
-                                    <div class="size-204 flex-w flex-m respon6-next">
-                                        <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                            <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                                <i class="fs-16 zmdi zmdi-minus"></i>
-                                            </div>
-
-                                            <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
-
-                                            <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                                <i class="fs-16 zmdi zmdi-plus"></i>
-                                            </div>
-                                        </div>
-
-                                        <div id="Datmua">
-                                            <a href="@Url.Action("AddCart", "Cart", new { @maSanPham=@Model.MASANPHAM, strURL=Request.Url.ToString() } )">
-                                                THÊM VÀO GIỎ HÀNG
-                                            </a>
-                                        </div>
-
+                            <!-- Button -->
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-204 flex-w flex-m respon6-next">
+                                    <div class="flex-c-m flex-w w-full p-t-45">
+                                        <a href="@Url.Action("AddCart", "Cart", new { @maSanPham=@Model.MASANPHAM, strURL=Request.Url.ToString() } )" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+                                            THÊM VÀO GIỎ HÀNG
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -191,5 +128,4 @@
         </div>
     </section>
 </body>
-</html>
 

@@ -18,24 +18,10 @@ namespace ZiWatchVer3.Controllers
             return View(newProduct);
         }
 
-        public ActionResult Category()
-        {
-            var categoryList = from cate in data.DANHMUCs select cate;
-            return PartialView(categoryList);
-        }
-
         public ActionResult Slider()
         {
             var slider = from slide in data.SLIDERs select slide;
             return PartialView(slider);
-        }
-
-        public ActionResult Modal(int id)
-        {
-            var modal = from md in data.SANPHAMs
-                        where md.MASANPHAM == id
-                        select md;
-            return PartialView(modal.Single());
         }
     }
 }

@@ -70,13 +70,13 @@ namespace ZiWatchVer3.Controllers
         public ActionResult ShoppingCart()
         {
             List<TheOrder> lstCart = GetCart();
-            if(lstCart.Count==0)
+            if (lstCart.Count == 0)
             {
                 return RedirectToAction("Index", "HomePage");
             }
             ViewBag.Num = GetNum();
             ViewBag.Price = GetTotalPrice();
-            return View();
+            return View(lstCart);
         }
     }
 }

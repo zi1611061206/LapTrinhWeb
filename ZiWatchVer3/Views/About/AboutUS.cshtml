@@ -4,172 +4,163 @@
     Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Bootstrap core CSS -->
-    <link href="~/vendor/bootstrap2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="~/Content/simple-sidebar.css" rel="stylesheet">
-    <link href="~/vendor/grid.css" rel="stylesheet">
-    <style>
-        .Avatar {
-            width: 70%;
-            height: 300px;
+<style>
+    .Avatar {
+        width: 70%;
+        height: 300px;
+        display: block;
+        border-radius: 60%;
+        border: 4px solid rgba(75, 202, 243, 0.96);
+        margin-bottom: 10px;
+        margin-left: 15%;
+        box-shadow: 5px -5px 5px 5px rgba(75, 202, 243, 0.96);
+    }
+
+    #name-admin, #position-admin {
+        display: block;
+        text-align: center;
+    }
+
+    .part {
+        text-transform: uppercase;
+        font-family: Arial;
+        font-weight: 5px;
+        text-align: center;
+        color: #ff6a00;
+    }
+
+        .part::after {
+            content: " ";
             display: block;
-            border-radius: 60%;
-            border: 4px solid rgba(75, 202, 243, 0.96);
-            margin-bottom: 10px;
-            margin-left: 15%;
-            box-shadow: 5px -5px 5px 5px rgba(75, 202, 243, 0.96);
+            height: 2px;
+            background-color: #ff6a00;
         }
 
-        #name-admin, #position-admin {
-            display: block;
-            text-align: center;
-        }
+    h4 {
+        text-transform: uppercase;
+    }
 
-        .part {
-            text-transform: uppercase;
-            font-family: Arial;
-            font-weight: 5px;
-            text-align: center;
-            color: #ff6a00;
-        }
-            .part::after {
-                content: " ";
-                display: block;
-                height: 2px;
-                background-color: #ff6a00;
-            }
-
-        h4 {
-            text-transform: uppercase;
-        }
-
-        p {
-            margin-right: 10px;
-            margin-left: 10px;
-        }
-    </style>
-</head>
+    p {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+</style>
 <body>
     <br /><br /><br />
-
     <section class="bg0 p-t-23 p-b-140">
         <div class="container">
             <!-- Admin -->
-            <div class="p-b-10">
-                <h3 class="ltext-103 cl5">
-                    About Adminstrator
-                </h3>
-            </div>
+            <div>
+                <div class="p-b-10">
+                    <h3 class="ltext-103 cl5">
+                        About Adminstrator
+                    </h3>
+                </div>
 
-            <div class="row">
-                @foreach (var item in Model)
-                {
-                    <div class="col span-1-of-3">
-                        <img src="~/images/@item.ANHDAIDIEN" alt="@item.HOTEN" class="Avatar" />
-                        <h4 id="name-admin">@item.HOTEN</h4><br />
-                        <h5 id="position-admin">Quản trị viên</h5>
-                    </div>
-                }
-            </div><br />
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col span-1-of-3">
+                            <img src="~/images/@item.ANHDAIDIEN" alt="@item.HOTEN" class="Avatar" />
+                            <h4 id="name-admin">@item.HOTEN</h4><br />
+                            <h5 id="position-admin">Quản trị viên</h5>
+                        </div>
+                    }
+                </div><br />
+            </div>
 
             <!-- Warranty Policy -->
-            <div class="p-b-10">
-                <h3 class="part">
-                    Chính sách bảo hành
-                </h3>
-            </div>
+            <div>
+                <div class="p-b-10">
+                    <h3 class="part">
+                        Chính sách bảo hành
+                    </h3>
+                </div>
 
-            <h4>ĐIỀU KIỆN BẢO HÀNH:</h4>
-            <p>
-                -	Phải xuất trình phiếu bảo hành kèm theo sản phẩm.<br />
-                -	Tất cả sản phẩm phải còn nguyên vẹn tem của Công ty và không có dấu hiệu tẩy xóa sửa đổi.<br />
-                -	Sản phẩm hư hỏng do lỗi nhà sản xuất.<br />
-            </p>
-            <h4>NHỮNG TRƯỜNG HỢP TỪ CHỐI BẢO HÀNH:</h4>
-            <p>
-                -	Sản phẩm đã hết hạn bảo hành hoặc không có phiếu bảo hành của Công ty.<br />
-                -	Không có tem bảo hành hay số series number của nhà sản xuất bị rách, mờ có dấu hiệu chỉnh sửa<br />
-                -	Số series number trên sản phẩm sai lệch so với phiếu bảo hành của Công ty.<br />
-                -	Sản phẩm không còn nguyên vẹn về mặt vật lý, bị rơi rớt, bị va chạm, bị cháy nổ, có dấu vết người dùng tự ý sửa chữa<br />
-                -	Sản phẩm bị thiên tai, sét đánh, lũ lụt, hỏa hoạn, virus tin học, côn trùng, động vật phá hỏng, môi trường ẩm bị Oxy hóa, bị đất cát nước vào (tùy sản phẩm)<br />
-                -	Không bảo hành các phụ kiện kèm theo (nếu có).<br />
-                <i>*Chú ý: Khách hàng phải thanh toán chi phí vận chuyển nếu có.</i>
-            </p>
+                <h4>ĐIỀU KIỆN BẢO HÀNH:</h4>
+                <p>
+                    -	Phải xuất trình phiếu bảo hành kèm theo sản phẩm.<br />
+                    -	Tất cả sản phẩm phải còn nguyên vẹn tem của Công ty và không có dấu hiệu tẩy xóa sửa đổi.<br />
+                    -	Sản phẩm hư hỏng do lỗi nhà sản xuất.<br />
+                </p>
+                <h4>NHỮNG TRƯỜNG HỢP TỪ CHỐI BẢO HÀNH:</h4>
+                <p>
+                    -	Sản phẩm đã hết hạn bảo hành hoặc không có phiếu bảo hành của Công ty.<br />
+                    -	Không có tem bảo hành hay số series number của nhà sản xuất bị rách, mờ có dấu hiệu chỉnh sửa<br />
+                    -	Số series number trên sản phẩm sai lệch so với phiếu bảo hành của Công ty.<br />
+                    -	Sản phẩm không còn nguyên vẹn về mặt vật lý, bị rơi rớt, bị va chạm, bị cháy nổ, có dấu vết người dùng tự ý sửa chữa<br />
+                    -	Sản phẩm bị thiên tai, sét đánh, lũ lụt, hỏa hoạn, virus tin học, côn trùng, động vật phá hỏng, môi trường ẩm bị Oxy hóa, bị đất cát nước vào (tùy sản phẩm)<br />
+                    -	Không bảo hành các phụ kiện kèm theo (nếu có).<br />
+                    <i>*Chú ý: Khách hàng phải thanh toán chi phí vận chuyển nếu có.</i>
+                </p>
+            </div>
 
             <!-- Return Policy -->
-            <div class="p-b-10">
-                <h3 class="part">
-                    Chính sách đổi trả
-                </h3>
-            </div>
+            <div>
+                <div class="p-b-10">
+                    <h3 class="part">
+                        Chính sách đổi trả
+                    </h3>
+                </div>
 
-            <h4>Sản phẩm lỗi do nhà sản xuất</h4>
-            <table style="width:100%">
-                <tr>
-                    <th>Dưới 1 tháng</th>
-                    <th>2 – 12 tháng</th>
-                </tr>
-                <tr>
-                    <td>
-                        <p>
-                            - 1 đổi 1 (cùng mẫu, cùng màu, …)<br />
-                            - Trường hợp sản phẩm đổi hết hàng, khách hàng có thể đổi sang sản phẩm khác cùng nhóm hàng<br />
-                            <b>Hoặc:</b><br />
-                            Khách hàng trả sản phẩm & được hoàn lại tiền với mức giá bằng 80% giá trên hoá đơn.
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            Gửi sản phẩm bảo hành theo quy định<br />
-                            <b>Hoặc:</b><br />
-                            Khách hàng trả sản phẩm & được hoàn lại tiền và thu phí thêm 5% so với mức hoàn tiền khi trả dưới 1 tháng.<br />
-                            <br />
-                            VD: Ở tháng thứ nhất, nếu khách hàng trả sản phẩm sẽ được hoàn lại tiền với mức giá bằng 80% thì sang tháng thứ 2 sẽ thu phí thêm 5% nên mức hoàn tiền sẽ còn 75% giá trị sản phẩm trên hoá
-                        </p>
-                    </td>
-                </tr>
-            </table><hr />
+                <h4>Sản phẩm lỗi do nhà sản xuất</h4>
+                <table style="width:100%">
+                    <tr>
+                        <th>Dưới 1 tháng</th>
+                        <th>2 – 12 tháng</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                - 1 đổi 1 (cùng mẫu, cùng màu, …)<br />
+                                - Trường hợp sản phẩm đổi hết hàng, khách hàng có thể đổi sang sản phẩm khác cùng nhóm hàng<br />
+                                <b>Hoặc:</b><br />
+                                Khách hàng trả sản phẩm & được hoàn lại tiền với mức giá bằng 80% giá trên hoá đơn.
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                Gửi sản phẩm bảo hành theo quy định<br />
+                                <b>Hoặc:</b><br />
+                                Khách hàng trả sản phẩm & được hoàn lại tiền và thu phí thêm 5% so với mức hoàn tiền khi trả dưới 1 tháng.<br />
+                                <br />
+                                VD: Ở tháng thứ nhất, nếu khách hàng trả sản phẩm sẽ được hoàn lại tiền với mức giá bằng 80% thì sang tháng thứ 2 sẽ thu phí thêm 5% nên mức hoàn tiền sẽ còn 75% giá trị sản phẩm trên hoá
+                            </p>
+                        </td>
+                    </tr>
+                </table><hr />
 
-            <h4>Sản phẩm không lỗi (không phù hợp với nhu cầu của khách hàng)</h4>
-            <table style="width:100%">
-                <tr>
-                    <th>Dưới 1 tháng</th>
-                    <th>2 – 12 tháng</th>
-                </tr>
-                <tr>
-                    <td>
-                        <p>
-                            Hoàn lại tiền với giá bằng 80% giá trên hoá đơn.
-                        </p>
-                    </td>
-                    <td>
-                        <p>
-                            Hoàn lại tiền với mức phí thêm 5% so với tháng thứ 1 (80%).
-                        </p>
-                    </td>
-                </tr>
+                <h4>Sản phẩm không lỗi (không phù hợp với nhu cầu của khách hàng)</h4>
+                <table style="width:100%">
+                    <tr>
+                        <th>Dưới 1 tháng</th>
+                        <th>2 – 12 tháng</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                Hoàn lại tiền với giá bằng 80% giá trên hoá đơn.
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                Hoàn lại tiền với mức phí thêm 5% so với tháng thứ 1 (80%).
+                            </p>
+                        </td>
+                    </tr>
+                    <p>
+                        <i>*Phần chênh lệch giá là khoản phí khách hàng phải trả và shop xuất hoá đơn giá trị gia tăng (GTGT) cho khoản phí này.</i>
+                    </p>
+                </table><hr />
+
+                <h4>Sản phẩm lỗi do người sử dụng:</h4>
                 <p>
-                    <i>*Phần chênh lệch giá là khoản phí khách hàng phải trả và shop xuất hoá đơn giá trị gia tăng (GTGT) cho khoản phí này.</i>
-                </p>
-            </table><hr />
-
-            <h4>Sản phẩm lỗi do người sử dụng:</h4>
-            <p>
-                -	Không đủ điều kiện bảo hành theo qui định.<br />
-                -	Sản phẩm không còn nguyên 100% hình dạng ban đầu.<br />
-                <i>=> Không áp dụng bảo hành, đổi trả. shop hỗ trợ trung chuyển bảo hành, khách hàng chịu chi phí sửa chữa.</i>
-            </p><hr />
-
+                    -	Không đủ điều kiện bảo hành theo qui định.<br />
+                    -	Sản phẩm không còn nguyên 100% hình dạng ban đầu.<br />
+                    <i>=> Không áp dụng bảo hành, đổi trả. shop hỗ trợ trung chuyển bảo hành, khách hàng chịu chi phí sửa chữa.</i>
+                </p><hr />
+            </div>
         </div>
     </section>
 </body>
-</html>
 

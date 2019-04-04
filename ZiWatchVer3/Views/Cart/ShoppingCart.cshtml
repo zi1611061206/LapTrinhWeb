@@ -1,18 +1,12 @@
-﻿@using ZiWatchVer3.Models;
+﻿@using ZiWatchVer3.Models
 @model List<TheOrder>
-@{
-    ViewBag.Title = "Shopping Cart";
-    Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
-}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Shoping Cart</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body class="animsition">
+    @{
+        ViewBag.Title = "Shopping Cart";
+        Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
+    }
+
+<body>
     <br /><br /><br />
     <!-- Shoping Cart -->
     <form class="bg0 p-t-75 p-b-85">
@@ -34,34 +28,20 @@
                                 </tr>
                                 @foreach (var item in Model)
                                 {
-                                <tr class="table_row">
-                                    <td class="column-1">@item.MaSanPham</td>
-                                    <td class="column-2">
-                                        <div class="how-itemcart1">
-                                            <img src="~/images/@item.HinhAnh" alt="@item.TenSanPham">
-                                        </div>
-                                    </td>
-                                    <td class="column-3">@item.TenSanPham</td>
-                                    <td class="column-4">@item.SoLuong</td>
-                                    <td class="column-5">@String.Format("{0:0,0}", item.DonGia)</td>
-                                    <td class="column-6">@String.Format("{0:0,0}", item.ThanhTien)</td>
-                                </tr>
+                                    <tr class="table_row">
+                                        <td class="column-1">@item.MaSanPham</td>
+                                        <td class="column-2">
+                                            <div class="how-itemcart1">
+                                                <img src="~/images/@item.HinhAnh" alt="@item.TenSanPham">
+                                            </div>
+                                        </td>
+                                        <td class="column-3">@item.TenSanPham</td>
+                                        <td class="column-4">@item.SoLuong</td>
+                                        <td class="column-5">@String.Format("{0:0,0}", item.DonGia)</td>
+                                        <td class="column-6">@String.Format("{0:0,0}", item.ThanhTien)</td>
+                                    </tr>
                                 }
                             </table>
-                        </div>
-                        <!-- Update Cart -->
-                        <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
-                            <div class="flex-w flex-m m-r-20 m-tb-5">
-                                <input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="coupon" placeholder="Coupon Code">
-
-                                <div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-                                    Apply coupon
-                                </div>
-                            </div>
-
-                            <div class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
-                                Update Cart
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,14 +85,12 @@
     </form>
 
     <script type="text/javascript">
-    $(document).ready(function () {
-        $("#pay").click(function () {
-            var url = '@Url.Action("Pay", "Cart")';
-            window.location.assign(url);
+        $(document).ready(function () {
+            $("#pay").click(function () {
+                var url = '@Url.Action("Pay", "Cart")';
+                window.location.assign(url);
+            });
         });
-    });
     </script>
-
-</body>
-</html>
+</body>    
 
