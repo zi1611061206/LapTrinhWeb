@@ -78,5 +78,50 @@ namespace ZiWatchVer3.Controllers
             ViewBag.Price = GetTotalPrice();
             return View(lstCart);
         }
+
+        //Cart display icon
+        public ActionResult CartPartial()
+        {
+            ViewBag.Num = GetNum();
+            ViewBag.Price = GetTotalPrice();
+            return PartialView();
+        }
+
+        //Delete cart
+        public ActionResult DeleteCart(int maSanPham)
+        {
+            List<TheOrder> lstCart = GetCart();
+            TheOrder product = lstCart.SingleOrDefault(n => n.MaSanPham == maSanPham);
+            if(product!=null)
+            {
+                lstCart.RemoveAll(n => n.MaSanPham == maSanPham);
+                return RedirectToAction("ShoppingCart");
+            }
+            if(lstCart.Count==0)
+            {
+                return RedirectToAction("Index", "HomePage");
+            }
+            return RedirectToAction("ShoppingCart");
+        }
+        
+        //Update cart
+        public ActionResult UpdateCart(int maSanPham, FormCollection f)
+        {
+            List<TheOrder> lstCart = GetCart();
+            TheOrder product = lstCart.SingleOrDefault(n => n.MaSanPham == maSanPham);
+            if(product!=null)
+            {
+                product.SoLuong = int.Parse(f["txbAmount"].ToString());
+            }
+            return RedirectToAction("ShoppingCart");
+        }
+
+        //Clear Cart
+        public ActionResult ClearCart()
+        {
+            List<TheOrder> lstCart = GetCart();
+            lstCart.Clear();
+            return RedirectToAction("Index", "HomePage");
+        }
     }
 }

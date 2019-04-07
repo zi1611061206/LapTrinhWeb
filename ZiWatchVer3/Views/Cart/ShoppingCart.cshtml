@@ -5,6 +5,36 @@
         ViewBag.Title = "Shopping Cart";
         Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
     }
+<style>
+    td,th{
+        text-align: center;
+    }
+    .column-id {
+        width: 60px;
+    }
+    .column-pic, column-price, column-total, column-price, column-total, column-name {
+        width: 100px;
+    }
+    .column-update{
+        width: 100px;
+        align-items: center;
+    }
+    .column-amount,column-detail,column-delete {
+        width: 70px;
+    }
+    #nud-amount {
+        width: 50px;
+        background-color: yellow;
+        text-align: center;
+        color: #00ff21
+    }
+    #btn-update {
+        background-color: #767575; 
+        color: white; 
+        border-radius: 15px; 
+        width: 90px
+    }
+</style>
 
 <body>
     <br /><br /><br />
@@ -19,27 +49,34 @@
                         <div class="wrap-table-shopping-cart">
                             <table class="table-shopping-cart">
                                 <tr class="table_head">
-                                    <th class="column-1">Mã Sản Phẩm</th>
-                                    <th class="column-2"></th>
-                                    <th class="column-3">Tên Sản Phẩm</th>
-                                    <th class="column-4">Số Lượng</th>
-                                    <th class="column-5">Đơn Giá</th>
-                                    <th class="column-6">Thành Tiền</th>
+                                    <th class="column-id">Mã Sản Phẩm</th>
+                                    <th class="column-pic"></th>
+                                    <th class="column-name">Tên Sản Phẩm</th>
+                                    <th class="column-amount">Số Lượng</th>
+                                    <th class="column-price">Đơn Giá</th>
+                                    <th class="column-total">Thành Tiền</th>
+                                    <th class="column-update">@Html.ActionLink("Dọn dẹp giỏ hàng","ClearCart")</th>
                                 </tr>
                                 @foreach (var item in Model)
                                 {
-                                    <tr class="table_row">
-                                        <td class="column-1">@item.MaSanPham</td>
-                                        <td class="column-2">
-                                            <div class="how-itemcart1">
-                                                <img src="~/images/@item.HinhAnh" alt="@item.TenSanPham">
-                                            </div>
+                                <tr class="table_row">
+                                    <td class="column-id">@item.MaSanPham</td>
+                                    <td class="column-pic"><img src="~/images/@item.HinhAnh" alt="@item.TenSanPham" style="width: 90px"></td>
+                                    <td class="column-name">@item.TenSanPham</td>
+                                    @using (Html.BeginForm("UpdateCart", "Cart", new { @maSanPham = item.MaSanPham }))
+                                    {
+                                        <td class="column-amount">
+                                            <input type="number" min="1" name="txbAmount" value="@item.SoLuong" id="nud-amount" />
                                         </td>
-                                        <td class="column-3">@item.TenSanPham</td>
-                                        <td class="column-4">@item.SoLuong</td>
-                                        <td class="column-5">@String.Format("{0:0,0}", item.DonGia)</td>
-                                        <td class="column-6">@String.Format("{0:0,0}", item.ThanhTien)</td>
-                                    </tr>
+                                        <td class="column-price">@String.Format("{0:0,0}", item.DonGia)</td>
+                                        <td class="column-total" style="color: red">@String.Format("{0:0,0}", item.ThanhTien)</td>
+                                        <td class="column-update">
+                                            <a href="@Url.Action("Details", "Product", new { id = item.MaSanPham })">Chi tiết</a><br />
+                                            @Html.ActionLink("Xóa", "DeleteCart", new { @maSanPham = item.MaSanPham })<br />
+                                            <input type="submit" value="Cập nhật" id="btn-update" />
+                                        </td>
+                                    }
+                                </tr>
                                 }
                             </table>
                         </div>
@@ -54,7 +91,7 @@
                         </h4>
 
                         <div class="flex-w flex-t bor12 p-b-13">
-                            <div class="size-208">
+                            <div class="size-301">
                                 <span class="stext-110 cl2">
                                     Tổng số sản phẩm: @ViewBag.Num
                                 </span>
