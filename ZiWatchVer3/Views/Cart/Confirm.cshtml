@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Đặt Hàng Thành Công";
+    Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
+}
+<style>
+    .form {
+        background-color: #c1c1c1;
+        margin: 20px 30% 30px 30%;
+        width: 500px;
+        height: 250px;
+        border-radius: 5%;
+        padding-top: 30px;
+        color: black;
+        opacity: 0.9;
+        overflow: auto;
+        resize: vertical;
+    }
+</style>
+<br /><br /><br /><br />
+<div class="container">
+    <div class="form">
+        <h2 style="text-align: center">Đơn hàng của quý khách đã được ghi nhận! Chúng tôi sẽ liên hệ quý khách trong thời gian sớm nhất. <br />Trân trọng cảm ơn!</h2>
+        <br />
+        <p style="text-align: center; font-weight: bold; font-size: 18px">
+            @Html.ActionLink("Quay về trang chủ", "Index", "HomePage")
+        </p>
+    </div>
+</div>

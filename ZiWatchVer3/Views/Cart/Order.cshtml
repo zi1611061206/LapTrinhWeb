@@ -1,0 +1,138 @@
+﻿@using ZiWatchVer3.Models
+@model List<TheOrder>
+@{
+    ViewBag.Title = "Đơn Đặt Hàng";
+    Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
+}
+<style>
+    .column-id {
+        width: 60px;
+        text-align: center;
+    }
+    .column-pic, column-price, column-total, column-price, column-total, column-name {
+        width: 100px;
+        text-align: center;
+    }
+    .column-update {
+        width: 100px;
+        align-items: center;
+        text-align: center;
+    }
+    .column-amount, column-detail, column-delete {
+        width: 70px;
+        text-align: center;
+    }
+    #nud-amount {
+        width: 50px;
+        background-color: yellow;
+        text-align: center;
+        color: #00ff21
+    }
+    .customs {
+        margin: 10px 18% 10px 35%;
+    }
+    #btn-update {
+        background-color: #767575;
+        color: white;
+        border-radius: 15px;
+        width: 90px
+    }
+    #btn-agree {
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 15px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+    }
+    #btn-agree:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+</style>
+
+<br /><br /><br /><br /><br />
+<div class="container">
+    <h2 style="text-align: center">THÔNG TIN ĐƠN HÀNG</h2>
+    <!-- Table Cart -->
+    <table class="table-shopping-cart">
+        <tr class="table_head">
+            <th class="column-id">Mã Sản Phẩm</th>
+            <th class="column-pic"></th>
+            <th class="column-name">Tên Sản Phẩm</th>
+            <th class="column-amount">Số Lượng</th>
+            <th class="column-price">Đơn Giá</th>
+            <th class="column-total">Thành Tiền</th>
+            <th class="column-update">@Html.ActionLink("Dọn dẹp giỏ hàng", "ClearCart")</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="table_row">
+                <td class="column-id">@item.MaSanPham</td>
+                <td class="column-pic"><img src="~/images/@item.HinhAnh" alt="@item.TenSanPham" style="width: 90px"></td>
+                <td class="column-name">@item.TenSanPham</td>
+                @using (Html.BeginForm("UpdateCart", "Cart", new { @maSanPham = item.MaSanPham }))
+                {
+                    <td class="column-amount">
+                        <input type="number" min="1" name="txbAmount" value="@item.SoLuong" id="nud-amount" />
+                    </td>
+                    <td class="column-price">@String.Format("{0:0,0}", item.DonGia)</td>
+                    <td class="column-total" style="color: red">@String.Format("{0:0,0}", item.ThanhTien)</td>
+                    <td class="column-update">
+                        <a href="@Url.Action("Details", "Product", new { id = item.MaSanPham })">Chi tiết</a><br />
+                        @Html.ActionLink("Xóa", "DeleteCart", new { @maSanPham = item.MaSanPham })<br />
+                        <input type="submit" value="Cập nhật" id="btn-update" />
+                    </td>
+                }
+            </tr>
+        }
+        <tr>
+            <td colspan="7" style="text-align: center">@Html.ActionLink("Quay lại giỏ hàng", "ShoppingCart", "Cart")</td>
+        </tr>
+    </table>
+    <br /><br />
+    <h2 style="text-align: center">THÔNG TIN KHÁCH HÀNG</h2>
+    @{
+        KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+    }
+    <table class="customs">
+        @using (Html.BeginForm())
+        {
+            <tr style="height: 40px">
+                <td>Họ tên khách hàng:</td>
+                <td class="custom-info" style="font-weight: bold">@kh.HOTEN</td>
+            </tr>
+
+            <tr style="height: 40px">
+                <td>Địa chỉ:</td>
+                <td class="custom-info" style="font-weight: bold">@kh.DIACHI</td>
+            </tr>
+
+            <tr style="height: 40px">
+                <td>Số điện thoại:</td>
+                <td class="custom-info" style="font-weight: bold">(+84) @kh.SODIENTHOAI</td>
+            </tr>
+
+            <tr style="height: 40px">
+                <td>Ngày đặt hàng:</td>
+                <td class="custom-info" style="font-weight: bold">@DateTime.Now.ToShortDateString()</td>
+            </tr>
+
+            <tr style="height: 40px">
+                <td>Tổng giá trị đơn hàng:</td>
+                <td class="custom-info" style="font-weight: bold">@String.Format("{0:0,0}", ViewBag.Price)</td>
+            </tr>
+
+            <tr style="height: 40px">
+                <td colspan="2"><input type="submit" value="ĐỒNG Ý ĐẶT HÀNG " id="btn-agree"/></td>
+            </tr>
+        }
+    </table>
+</div>
+

@@ -111,8 +111,8 @@ namespace ZiWatchVer3.Controllers
                 KHACHHANG khachhang = data.KHACHHANGs.SingleOrDefault(n => n.EMAIL == email && n.MATKHAU == matKhau);
                 if (khachhang != null)
                 {
-                    ViewBag.Thongbao = "Chúc mừng đăng nhập thành công";
                     Session["TaiKhoan"] = khachhang;
+                    return RedirectToAction("Index","HomePage");
                 }
                 else
                 {
@@ -120,6 +120,17 @@ namespace ZiWatchVer3.Controllers
                 }
             }
             return View();
+        }
+
+        public ActionResult Account()
+        {
+            return PartialView();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index", "HomePage");
         }
     }
 }

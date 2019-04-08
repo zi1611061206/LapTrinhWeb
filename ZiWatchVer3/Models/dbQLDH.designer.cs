@@ -30,6 +30,9 @@ namespace ZiWatchVer3.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertCHITIETDONHANG(CHITIETDONHANG instance);
+    partial void UpdateCHITIETDONHANG(CHITIETDONHANG instance);
+    partial void DeleteCHITIETDONHANG(CHITIETDONHANG instance);
     partial void InsertDANHMUC(DANHMUC instance);
     partial void UpdateDANHMUC(DANHMUC instance);
     partial void DeleteDANHMUC(DANHMUC instance);
@@ -168,8 +171,12 @@ namespace ZiWatchVer3.Models
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHITIETDONHANG")]
-	public partial class CHITIETDONHANG
+	public partial class CHITIETDONHANG : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MACHITIETDONHANG;
 		
 		private int _MADONHANG;
 		
@@ -179,8 +186,51 @@ namespace ZiWatchVer3.Models
 		
 		private double _THANHTIEN;
 		
+		private EntityRef<DONHANG> _DONHANG;
+		
+		private EntityRef<SANPHAM> _SANPHAM;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMACHITIETDONHANGChanging(int value);
+    partial void OnMACHITIETDONHANGChanged();
+    partial void OnMADONHANGChanging(int value);
+    partial void OnMADONHANGChanged();
+    partial void OnMASANPHAMChanging(int value);
+    partial void OnMASANPHAMChanged();
+    partial void OnSOLUONGChanging(int value);
+    partial void OnSOLUONGChanged();
+    partial void OnTHANHTIENChanging(double value);
+    partial void OnTHANHTIENChanged();
+    #endregion
+		
 		public CHITIETDONHANG()
 		{
+			this._DONHANG = default(EntityRef<DONHANG>);
+			this._SANPHAM = default(EntityRef<SANPHAM>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACHITIETDONHANG", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MACHITIETDONHANG
+		{
+			get
+			{
+				return this._MACHITIETDONHANG;
+			}
+			set
+			{
+				if ((this._MACHITIETDONHANG != value))
+				{
+					this.OnMACHITIETDONHANGChanging(value);
+					this.SendPropertyChanging();
+					this._MACHITIETDONHANG = value;
+					this.SendPropertyChanged("MACHITIETDONHANG");
+					this.OnMACHITIETDONHANGChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MADONHANG", DbType="Int NOT NULL")]
@@ -194,7 +244,15 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._MADONHANG != value))
 				{
+					if (this._DONHANG.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMADONHANGChanging(value);
+					this.SendPropertyChanging();
 					this._MADONHANG = value;
+					this.SendPropertyChanged("MADONHANG");
+					this.OnMADONHANGChanged();
 				}
 			}
 		}
@@ -210,7 +268,15 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._MASANPHAM != value))
 				{
+					if (this._SANPHAM.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMASANPHAMChanging(value);
+					this.SendPropertyChanging();
 					this._MASANPHAM = value;
+					this.SendPropertyChanged("MASANPHAM");
+					this.OnMASANPHAMChanged();
 				}
 			}
 		}
@@ -226,7 +292,11 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._SOLUONG != value))
 				{
+					this.OnSOLUONGChanging(value);
+					this.SendPropertyChanging();
 					this._SOLUONG = value;
+					this.SendPropertyChanged("SOLUONG");
+					this.OnSOLUONGChanged();
 				}
 			}
 		}
@@ -242,8 +312,100 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._THANHTIEN != value))
 				{
+					this.OnTHANHTIENChanging(value);
+					this.SendPropertyChanging();
 					this._THANHTIEN = value;
+					this.SendPropertyChanged("THANHTIEN");
+					this.OnTHANHTIENChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DONHANG_CHITIETDONHANG", Storage="_DONHANG", ThisKey="MADONHANG", OtherKey="MADONHANG", IsForeignKey=true)]
+		public DONHANG DONHANG
+		{
+			get
+			{
+				return this._DONHANG.Entity;
+			}
+			set
+			{
+				DONHANG previousValue = this._DONHANG.Entity;
+				if (((previousValue != value) 
+							|| (this._DONHANG.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DONHANG.Entity = null;
+						previousValue.CHITIETDONHANGs.Remove(this);
+					}
+					this._DONHANG.Entity = value;
+					if ((value != null))
+					{
+						value.CHITIETDONHANGs.Add(this);
+						this._MADONHANG = value.MADONHANG;
+					}
+					else
+					{
+						this._MADONHANG = default(int);
+					}
+					this.SendPropertyChanged("DONHANG");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SANPHAM_CHITIETDONHANG", Storage="_SANPHAM", ThisKey="MASANPHAM", OtherKey="MASANPHAM", IsForeignKey=true)]
+		public SANPHAM SANPHAM
+		{
+			get
+			{
+				return this._SANPHAM.Entity;
+			}
+			set
+			{
+				SANPHAM previousValue = this._SANPHAM.Entity;
+				if (((previousValue != value) 
+							|| (this._SANPHAM.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SANPHAM.Entity = null;
+						previousValue.CHITIETDONHANGs.Remove(this);
+					}
+					this._SANPHAM.Entity = value;
+					if ((value != null))
+					{
+						value.CHITIETDONHANGs.Add(this);
+						this._MASANPHAM = value.MASANPHAM;
+					}
+					else
+					{
+						this._MASANPHAM = default(int);
+					}
+					this.SendPropertyChanged("SANPHAM");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -539,6 +701,8 @@ namespace ZiWatchVer3.Models
 		
 		private bool _TRANGTHAI;
 		
+		private EntitySet<CHITIETDONHANG> _CHITIETDONHANGs;
+		
 		private EntityRef<KHACHHANG> _KHACHHANG;
 		
     #region Extensibility Method Definitions
@@ -567,6 +731,7 @@ namespace ZiWatchVer3.Models
 		
 		public DONHANG()
 		{
+			this._CHITIETDONHANGs = new EntitySet<CHITIETDONHANG>(new Action<CHITIETDONHANG>(this.attach_CHITIETDONHANGs), new Action<CHITIETDONHANG>(this.detach_CHITIETDONHANGs));
 			this._KHACHHANG = default(EntityRef<KHACHHANG>);
 			OnCreated();
 		}
@@ -755,6 +920,19 @@ namespace ZiWatchVer3.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DONHANG_CHITIETDONHANG", Storage="_CHITIETDONHANGs", ThisKey="MADONHANG", OtherKey="MADONHANG")]
+		public EntitySet<CHITIETDONHANG> CHITIETDONHANGs
+		{
+			get
+			{
+				return this._CHITIETDONHANGs;
+			}
+			set
+			{
+				this._CHITIETDONHANGs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KHACHHANG_DONHANG", Storage="_KHACHHANG", ThisKey="MAKHACHHANG", OtherKey="MAKHACHHANG", IsForeignKey=true)]
 		public KHACHHANG KHACHHANG
 		{
@@ -807,6 +985,18 @@ namespace ZiWatchVer3.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_CHITIETDONHANGs(CHITIETDONHANG entity)
+		{
+			this.SendPropertyChanging();
+			entity.DONHANG = this;
+		}
+		
+		private void detach_CHITIETDONHANGs(CHITIETDONHANG entity)
+		{
+			this.SendPropertyChanging();
+			entity.DONHANG = null;
 		}
 	}
 	
@@ -1540,6 +1730,8 @@ namespace ZiWatchVer3.Models
 		
 		private int _KICHCO;
 		
+		private EntitySet<CHITIETDONHANG> _CHITIETDONHANGs;
+		
 		private EntityRef<DANHMUC> _DANHMUC;
 		
 		private EntityRef<MAUSAC> _MAUSAC;
@@ -1586,6 +1778,7 @@ namespace ZiWatchVer3.Models
 		
 		public SANPHAM()
 		{
+			this._CHITIETDONHANGs = new EntitySet<CHITIETDONHANG>(new Action<CHITIETDONHANG>(this.attach_CHITIETDONHANGs), new Action<CHITIETDONHANG>(this.detach_CHITIETDONHANGs));
 			this._DANHMUC = default(EntityRef<DANHMUC>);
 			this._MAUSAC = default(EntityRef<MAUSAC>);
 			this._NHASANXUAT = default(EntityRef<NHASANXUAT>);
@@ -1924,6 +2117,19 @@ namespace ZiWatchVer3.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SANPHAM_CHITIETDONHANG", Storage="_CHITIETDONHANGs", ThisKey="MASANPHAM", OtherKey="MASANPHAM")]
+		public EntitySet<CHITIETDONHANG> CHITIETDONHANGs
+		{
+			get
+			{
+				return this._CHITIETDONHANGs;
+			}
+			set
+			{
+				this._CHITIETDONHANGs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DANHMUC_SANPHAM", Storage="_DANHMUC", ThisKey="MADANHMUC", OtherKey="MADANHMUC", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
 		public DANHMUC DANHMUC
 		{
@@ -2044,6 +2250,18 @@ namespace ZiWatchVer3.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_CHITIETDONHANGs(CHITIETDONHANG entity)
+		{
+			this.SendPropertyChanging();
+			entity.SANPHAM = this;
+		}
+		
+		private void detach_CHITIETDONHANGs(CHITIETDONHANG entity)
+		{
+			this.SendPropertyChanging();
+			entity.SANPHAM = null;
 		}
 	}
 	
