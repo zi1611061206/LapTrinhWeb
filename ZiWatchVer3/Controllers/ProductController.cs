@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ZiWatchVer3.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace ZiWatchVer3.Controllers
 {
@@ -12,10 +14,12 @@ namespace ZiWatchVer3.Controllers
         dbQLDHDataContext data = new dbQLDHDataContext();
 
         // GET: Product
-        public ActionResult AllView()
+        public ActionResult AllView(int ? page)
         {
+            int pageSize = 8;
+            int pageNum = (page ?? 1);
             var product = data.SANPHAMs.OrderByDescending(a => a.NGAYCAPNHAT).ToList();
-            return View(product);
+            return View(product.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult Category()
@@ -24,12 +28,14 @@ namespace ZiWatchVer3.Controllers
             return PartialView(categoryList);
         }
 
-        public ActionResult ForCategory(int id)
+        public ActionResult ForCategory(int id, int ? page)
         {
+            int pageSize = 8;
+            int pageNum = (page ?? 1);
             var product = from p in data.SANPHAMs
                           where p.MADANHMUC == id
                           select p;
-            return View(product);
+            return View(product.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult Supplier()
@@ -38,12 +44,14 @@ namespace ZiWatchVer3.Controllers
             return PartialView(supplierList);
         }
 
-        public ActionResult ForSupplier(int id)
+        public ActionResult ForSupplier(int id, int ? page)
         {
+            int pageSize = 8;
+            int pageNum = (page ?? 1);
             var supplier = from s in data.SANPHAMs
                           where s.MANHASANXUAT == id
                           select s;
-            return View(supplier);
+            return View(supplier.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult Color()
@@ -52,12 +60,14 @@ namespace ZiWatchVer3.Controllers
             return PartialView(colorList);
         }
 
-        public ActionResult ForColor(int id)
+        public ActionResult ForColor(int id, int ? page)
         {
+            int pageSize = 8;
+            int pageNum = (page ?? 1);
             var color = from c in data.SANPHAMs
                           where c.MAMAU == id
                           select c;
-            return View(color);
+            return View(color.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult Details(int id)

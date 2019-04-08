@@ -1,9 +1,17 @@
-﻿@model IEnumerable<ZiWatchVer3.Models.SANPHAM>
+﻿@using ZiWatchVer3.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<SANPHAM>
 @{
     ViewBag.Title = "For Category";
     Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
 }
-
+<style>
+    .page-menu li {
+        display: inline;
+        margin: 20px;
+        font-weight: 800;
+    }
+</style>
 <body>
     <br /><br /><br />
     <!-- Product -->
@@ -169,6 +177,12 @@
                         </div>
                     </div>
                 }
+            </div>
+
+            <!-- Page Link -->
+            Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+            <div class="page-menu">
+                @Html.PagedListPager(Model, page => Url.Action("ForCategory", new { page = page }))
             </div>
 
             <!-- Load more -->

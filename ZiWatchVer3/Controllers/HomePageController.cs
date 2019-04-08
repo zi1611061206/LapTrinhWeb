@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ZiWatchVer3.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace ZiWatchVer3.Controllers
 {
@@ -12,10 +14,12 @@ namespace ZiWatchVer3.Controllers
         dbQLDHDataContext data = new dbQLDHDataContext();
 
         // GET: HomePage
-        public ActionResult Index()
+        public ActionResult Index(int ? page)
         {
-            var newProduct = data.SANPHAMs.OrderByDescending(a => a.NGAYCAPNHAT).Take(7).ToList();
-            return View(newProduct);
+            int pageSize = 4;
+            int pageNum = (page ?? 1);
+            var newProduct = data.SANPHAMs.OrderByDescending(a => a.NGAYCAPNHAT).Take(8).ToList();
+            return View(newProduct.ToPagedList(pageNum,pageSize));
         }
 
         public ActionResult Slider()
