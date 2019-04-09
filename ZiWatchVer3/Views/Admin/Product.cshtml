@@ -1,0 +1,117 @@
+﻿@using ZiWatchVer3.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<ZiWatchVer3.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Quản lý sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br /><br /><br /><br />
+<div class="container animsition">
+    <!--Title-->
+    <h2>Quản lý sản phẩm</h2>
+    <p>
+        @Html.ActionLink("Tạo mới", "CreateProduct")
+    </p>
+
+    <!--TableInfo-->
+    <table class="table">
+        <tr>
+            <th style="width: 80px; text-align: center">Tên SP</th>
+            <th style="width: 100px; text-align: center">Tên danh mục</th>
+            <th style="width: 100px; text-align: center">Tên NSX</th>
+            <th style="width: 100px; text-align: center">Đơn giá</th>
+            <th style="width: 90px; text-align: center">Ảnh 1</th>
+            <th style="width: 90px; text-align: center">Ảnh 2</th>
+            <th style="width: 90px; text-align: center">Ảnh 3</th>
+            <th style="width: 80px; text-align: center">Tình trạng</th>
+            <th style="width: 100px; text-align: center">Ngày cập nhật</th>
+            <th style="width: 80px; text-align: center">Lượt xem</th>
+            <th style="width: 100px; text-align: center">Màu sắc</th>
+            <th style="width: 100px; text-align: center">Máy</th>
+            <th style="width: 100px; text-align: center">Mặt</th>
+            <th style="width: 100px; text-align: center">Dây</th>
+            <th style="width: 50px; text-align: center">Cỡ</th>
+            <th style="width: 100px; text-align: center"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENSANPHAM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DANHMUC.TENDANHMUC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NHASANXUAT.TENNHASANXUAT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DONGIA)
+                </td>
+                <td>
+                    <img class="pic-product" src="@Url.Content("~/images/"+item.HINHANH)" />
+                </td>
+                <td>
+                    <img class="pic-product" src="@Url.Content("~/images/"+item.HINHANH1)" />
+                </td>
+                <td>
+                    <img class="pic-product" src="@Url.Content("~/images/"+item.HINHANH2)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TINHTRANG)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NGAYCAPNHAT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LUOTXEM)
+                </td>
+                <td>
+                    <div @*style="color: @item.MAUSAC.MARGB"*@>@item.MAUSAC.TENMAU</div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOAIMAY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MATDONGHO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DAYDEO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KICHCO)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "EditProduct", new { id = item.MASANPHAM }) |
+                    @Html.ActionLink("Chi tiết", "DetailsProduct", new { id = item.MASANPHAM }) |
+                    @Html.ActionLink("Xóa", "DeleteProduct", new { id = item.MASANPHAM })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <!--PagedList-->
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div class="page-menu">
+        @Html.PagedListPager(Model, page => Url.Action("Product", new { page = page }))
+    </div>
+
+    <style>
+        .page-menu li {
+            display: inline;
+            margin: 20px;
+            font-weight: 800;
+        }
+
+        .pic-product {
+            width: 80px;
+        }
+        td{
+            text-align:center;
+        }
+    </style>
+</div>
