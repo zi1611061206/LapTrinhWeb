@@ -1,0 +1,142 @@
+﻿@model ZiWatchVer3.Models.SANPHAM
+
+@{
+    ViewBag.Title = "CreateProduct";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br /><br /><br /><br />
+<div class="container">
+    <h2>THÊM MỚI SẢN PHẨM</h2>
+
+    @using (Html.BeginForm("CreateProduct","Admin",FormMethod.Post,new { @enctype="multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.TENSANPHAM, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TENSANPHAM, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TENSANPHAM, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MADANHMUC, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("MaDanhMuc")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MANHASANXUAT, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("MaNhaSanXuat")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DONGIA, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DONGIA, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DONGIA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HINHANH, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="file-upload"/>
+                    @ViewBag.message
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.HINHANH1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="file-upload1" />
+                    @ViewBag.Message
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.HINHANH2, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="file-upload2" />
+                    @ViewBag.message
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TINHTRANG, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.TINHTRANG)
+                        @Html.ValidationMessageFor(model => model.TINHTRANG, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NGAYCAPNHAT, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="date" name="dtp-date-update"/>
+                    @Html.ValidationMessageFor(model => model.NGAYCAPNHAT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MAMAU, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("MaMau")
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LOAIMAY, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LOAIMAY, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LOAIMAY, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MATDONGHO, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MATDONGHO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MATDONGHO, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DAYDEO, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DAYDEO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DAYDEO, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.KICHCO, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KICHCO, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.KICHCO, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Thêm" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Quay về trang quản lý sản phẩm", "Product")
+    </div>
+
+</div>
