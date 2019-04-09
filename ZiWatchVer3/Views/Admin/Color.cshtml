@@ -1,0 +1,65 @@
+﻿@using ZiWatchVer3.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<ZiWatchVer3.Models.MAUSAC>
+
+@{
+    ViewBag.Title = "Quản lý màu";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br /><br /><br /><br />
+<div class="container">
+    <h2>Quản lý màu</h2>
+
+    <p>
+        @Html.ActionLink("Tạo mới", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TENMAU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MARGB)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENMAU)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MARGB)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MAMAU }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MAMAU }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MAMAU })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <!--PagedList-->
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div class="page-menu">
+        @Html.PagedListPager(Model, page => Url.Action("Product", new { page = page }))
+    </div>
+
+    <style>
+        .page-menu li {
+            display: inline;
+            margin: 20px;
+            font-weight: 800;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+</div>
+

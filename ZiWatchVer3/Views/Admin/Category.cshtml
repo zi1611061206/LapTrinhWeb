@@ -1,0 +1,59 @@
+﻿@@using ZiWatchVer3.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<ZiWatchVer3.Models.DANHMUC>
+
+@{
+    ViewBag.Title = "Quản lý danh mục";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br /><br /><br /><br />
+<div class="container">
+    <h2>Quản lý danh mục</h2>
+
+    <p>
+        @Html.ActionLink("Tạo mới", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TENDANHMUC)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TENDANHMUC)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MADANHMUC }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MADANHMUC }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MADANHMUC })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <!--PagedList-->
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div class="page-menu">
+        @Html.PagedListPager(Model, page => Url.Action("Product", new { page = page }))
+    </div>
+
+    <style>
+        .page-menu li {
+            display: inline;
+            margin: 20px;
+            font-weight: 800;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+</div>
+

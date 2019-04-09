@@ -73,14 +73,56 @@ namespace ZiWatchVer3.Controllers
         }
 
         //Category
+        public ActionResult Category(int? page)
+        {
+            int pageSize = 5;
+            int pageNum = (page ?? 1);
+            return View(data.DANHMUCs.ToList().OrderBy(n => n.MADANHMUC).ToPagedList(pageNum, pageSize));
+        }
         //Supplier
+        public ActionResult Supplier(int? page)
+        {
+            int pageSize = 5;
+            int pageNum = (page ?? 1);
+            return View(data.NHASANXUATs.ToList().OrderBy(n => n.MANHASANXUAT).ToPagedList(pageNum, pageSize));
+        }
         //Color
+        public ActionResult Color(int? page)
+        {
+            int pageSize = 5;
+            int pageNum = (page ?? 1);
+            return View(data.MAUSACs.ToList().OrderBy(n => n.MAMAU).ToPagedList(pageNum, pageSize));
+        }
         //Adminstrator
+        public ActionResult Adminstrator(int? page)
+        {
+            int pageSize = 5;
+            int pageNum = (page ?? 1);
+            return View(data.QUANTRIVIENs.ToList().OrderBy(n => n.MAQUANTRI).ToPagedList(pageNum, pageSize));
+        }
         //Customer
+        public ActionResult Customer(int? page)
+        {
+            int pageSize = 5;
+            int pageNum = (page ?? 1);
+            return View(data.KHACHHANGs.ToList().OrderBy(n => n.MAKHACHHANG).ToPagedList(pageNum, pageSize));
+        }
         //Order
         //OrderDetail
         //Slider
+        public ActionResult Slider(int? page)
+        {
+            int pageSize = 5;
+            int pageNum = (page ?? 1);
+            return View(data.SLIDERs.ToList().OrderBy(n => n.MA).ToPagedList(pageNum, pageSize));
+        }
         //Contact
+        public ActionResult Contact(int? page)
+        {
+            int pageSize = 5;
+            int pageNum = (page ?? 1);
+            return View(data.CONTACTs.ToList().OrderBy(n => n.MA).ToPagedList(pageNum, pageSize));
+        }
 
         //Login
         [HttpGet]

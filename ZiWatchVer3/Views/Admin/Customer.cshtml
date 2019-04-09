@@ -1,0 +1,95 @@
+﻿@using ZiWatchVer3.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<ZiWatchVer3.Models.KHACHHANG>
+
+@{
+    ViewBag.Title = "Quản lý khách hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br /><br /><br /><br />
+<div class="container">
+    <h2>Quản lý khách hàng</h2>
+
+    <p>
+        @Html.ActionLink("Tạo mới", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HOTEN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MATKHAU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GIOITINH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DIACHI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SODIENTHOAI)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.THOIDIEMDANGKY)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HOTEN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EMAIL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MATKHAU)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GIOITINH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DIACHI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SODIENTHOAI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.THOIDIEMDANGKY)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MAKHACHHANG }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MAKHACHHANG }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MAKHACHHANG })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <!--PagedList-->
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    <div class="page-menu">
+        @Html.PagedListPager(Model, page => Url.Action("Product", new { page = page }))
+    </div>
+
+    <style>
+        .page-menu li {
+            display: inline;
+            margin: 20px;
+            font-weight: 800;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+</div>
+
