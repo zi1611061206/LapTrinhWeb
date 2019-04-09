@@ -82,7 +82,7 @@ namespace ZiWatchVer3.Controllers
                 khachhang.SODIENTHOAI = soDienThoai;
                 data.KHACHHANGs.InsertOnSubmit(khachhang);
                 data.SubmitChanges();
-                return RedirectToAction("DangNhap");
+                return RedirectToAction("Login","User");
             }
             return this.Register();
         }
