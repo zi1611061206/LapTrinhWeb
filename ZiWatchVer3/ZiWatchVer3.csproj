@@ -661,6 +661,13 @@
     <Content Include="Views\Admin\Customer.cshtml" />
     <Content Include="Views\Admin\Slider.cshtml" />
     <Content Include="Views\Admin\Contact.cshtml" />
+    <Content Include="Views\Admin\CreateCategory.cshtml" />
+    <Content Include="Views\Admin\CreateSupplier.cshtml" />
+    <Content Include="Views\Admin\CreateColor.cshtml" />
+    <Content Include="Views\Admin\CreateAdminstrator.cshtml" />
+    <Content Include="Views\Admin\CreateCustomer.cshtml" />
+    <Content Include="Views\Admin\CreateSlider.cshtml" />
+    <Content Include="Views\Admin\CreateContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

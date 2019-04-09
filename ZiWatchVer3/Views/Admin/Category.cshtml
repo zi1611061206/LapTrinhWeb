@@ -1,24 +1,21 @@
-﻿@@using ZiWatchVer3.Models
+﻿@using ZiWatchVer3.Models
 @using PagedList.Mvc
 @model PagedList.PagedList<ZiWatchVer3.Models.DANHMUC>
 
 @{
-    ViewBag.Title = "Quản lý danh mục";
+    ViewBag.Title = "Quản lý danh mục";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<br /><br /><br /><br />
 <div class="container">
-    <h2>Quản lý danh mục</h2>
+    <h2>Quản lý danh mục</h2>
 
     <p>
-        @Html.ActionLink("Tạo mới", "Create")
+        @Html.ActionLink("Tạo mới", "CreateCategory")
     </p>
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TENDANHMUC)
-            </th>
+            <th>Tên danh mục</th>
             <th></th>
         </tr>
 
@@ -41,7 +38,7 @@
     <!--PagedList-->
     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
     <div class="page-menu">
-        @Html.PagedListPager(Model, page => Url.Action("Product", new { page = page }))
+        @Html.PagedListPager(Model, page => Url.Action("Category", new { page = page }))
     </div>
 
     <style>
@@ -51,9 +48,8 @@
             font-weight: 800;
         }
 
-        td {
+        th, td {
             text-align: center;
         }
     </style>
 </div>
-

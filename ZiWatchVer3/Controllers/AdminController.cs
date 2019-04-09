@@ -79,12 +79,24 @@ namespace ZiWatchVer3.Controllers
             int pageNum = (page ?? 1);
             return View(data.DANHMUCs.ToList().OrderBy(n => n.MADANHMUC).ToPagedList(pageNum, pageSize));
         }
+
+        [HttpGet]
+        public ActionResult CreateCategory()
+        {
+            return View();
+        }
         //Supplier
         public ActionResult Supplier(int? page)
         {
             int pageSize = 5;
             int pageNum = (page ?? 1);
             return View(data.NHASANXUATs.ToList().OrderBy(n => n.MANHASANXUAT).ToPagedList(pageNum, pageSize));
+        }
+
+        [HttpGet]
+        public ActionResult CreateSupplier()
+        {
+            return View();
         }
         //Color
         public ActionResult Color(int? page)
@@ -93,6 +105,12 @@ namespace ZiWatchVer3.Controllers
             int pageNum = (page ?? 1);
             return View(data.MAUSACs.ToList().OrderBy(n => n.MAMAU).ToPagedList(pageNum, pageSize));
         }
+
+        [HttpGet]
+        public ActionResult CreateColor()
+        {
+            return View();
+        }
         //Adminstrator
         public ActionResult Adminstrator(int? page)
         {
@@ -100,12 +118,25 @@ namespace ZiWatchVer3.Controllers
             int pageNum = (page ?? 1);
             return View(data.QUANTRIVIENs.ToList().OrderBy(n => n.MAQUANTRI).ToPagedList(pageNum, pageSize));
         }
+
+        [HttpGet]
+        public ActionResult CreateAdminstrator()
+        {
+            return View();
+        }
         //Customer
         public ActionResult Customer(int? page)
         {
             int pageSize = 5;
             int pageNum = (page ?? 1);
             return View(data.KHACHHANGs.ToList().OrderBy(n => n.MAKHACHHANG).ToPagedList(pageNum, pageSize));
+        }
+
+        [HttpGet]
+        public ActionResult CreateCustomer()
+        {
+            ViewBag.GioiTinh = new SelectList(new[] { new { ID="0", Name="Nam" }, new { ID="1", Name="Nữ" }}, "ID", "Name", 1);
+            return View();
         }
         //Order
         //OrderDetail
@@ -116,6 +147,12 @@ namespace ZiWatchVer3.Controllers
             int pageNum = (page ?? 1);
             return View(data.SLIDERs.ToList().OrderBy(n => n.MA).ToPagedList(pageNum, pageSize));
         }
+
+        [HttpGet]
+        public ActionResult CreateSlider()
+        {
+            return View();
+        }
         //Contact
         public ActionResult Contact(int? page)
         {
@@ -124,6 +161,11 @@ namespace ZiWatchVer3.Controllers
             return View(data.CONTACTs.ToList().OrderBy(n => n.MA).ToPagedList(pageNum, pageSize));
         }
 
+        [HttpGet]
+        public ActionResult CreateContact()
+        {
+            return View();
+        }
         //Login
         [HttpGet]
         public ActionResult Login()

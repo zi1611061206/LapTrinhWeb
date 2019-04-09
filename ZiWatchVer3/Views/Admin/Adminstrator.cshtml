@@ -3,31 +3,21 @@
 @model PagedList.PagedList<ZiWatchVer3.Models.QUANTRIVIEN>
 
 @{
-    ViewBag.Title = "Quản lý quản trị viên";
+    ViewBag.Title = "Quản lý quản trị viên";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<br /><br /><br /><br />
 <div class="container">
-    <h2>Quản lý quản trị viên</h2>
+    <h2>Quản lý quản trị viên</h2>
 
     <p>
-        @Html.ActionLink("Tạo mới", "Create")
+        @Html.ActionLink("Tạo mới", "CreateAdminstrator")
     </p>
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.HOTEN)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TENDANGNHAP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MATKHAU)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ANHDAIDIEN)
-            </th>
+            <th>Họ tên</th>
+            <th>Tên đăng nhập</th>
+            <th>Ảnh đại diện</th>
             <th></th>
         </tr>
 
@@ -41,10 +31,7 @@
                     @Html.DisplayFor(modelItem => item.TENDANGNHAP)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MATKHAU)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ANHDAIDIEN)
+                    <img style="width: 100px; height: 150px" src="@Url.Content("~/images/"+item.ANHDAIDIEN)" />
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.MAQUANTRI }) |
@@ -59,7 +46,7 @@
     <!--PagedList-->
     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
     <div class="page-menu">
-        @Html.PagedListPager(Model, page => Url.Action("Product", new { page = page }))
+        @Html.PagedListPager(Model, page => Url.Action("Adminstrator", new { page = page }))
     </div>
 
     <style>
@@ -69,9 +56,8 @@
             font-weight: 800;
         }
 
-        td {
+        th, td {
             text-align: center;
         }
     </style>
 </div>
-

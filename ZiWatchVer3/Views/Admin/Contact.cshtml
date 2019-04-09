@@ -3,43 +3,26 @@
 @model PagedList.PagedList<ZiWatchVer3.Models.CONTACT>
 
 @{
-    ViewBag.Title = "Quản lý thông tin liên hệ";
+    ViewBag.Title = "Quản lý thông tin liên hệ";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<br /><br /><br /><br />
 <div class="container">
-    <h2>Quản lý thông tin liên hệ</h2>
+    <h2>Quản lý thông tin liên hệ</h2>
 
     <p>
-        @Html.ActionLink("Tạo mới", "Create")
+        @Html.ActionLink("Tạo mới", "CreateContact")
     </p>
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MA)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TENSHOP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DIACHI)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SODIENTHOAI)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EMAIL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MASOTHUE)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.QUANLY)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TAIKHOANNGANHANG)
-            </th>
+            <th>Mã tin</th>
+            <th>Tên Shop</th>
+            <th>Địa chỉ</th>
+            <th>SĐT</th>
+            <th>Email</th>
+            <th>Mã số thuế</th>
+            <th>Người quản lý</th>
+            <th>Tài khoản ngân hàng</th>
             <th></th>
         </tr>
 
@@ -83,7 +66,7 @@
     <!--PagedList-->
     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
     <div class="page-menu">
-        @Html.PagedListPager(Model, page => Url.Action("Product", new { page = page }))
+        @Html.PagedListPager(Model, page => Url.Action("Contact", new { page = page }))
     </div>
 
     <style>
@@ -93,9 +76,9 @@
             font-weight: 800;
         }
 
-        td {
+        th,td {
             text-align: center;
         }
     </style>
-</div>
 
+</div>

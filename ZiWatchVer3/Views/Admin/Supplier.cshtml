@@ -1,27 +1,36 @@
 ﻿@using ZiWatchVer3.Models
 @using PagedList.Mvc
 @model PagedList.PagedList<ZiWatchVer3.Models.NHASANXUAT>
-
+@helper Truncate(string input, int length)
+{
+    if (String.IsNullOrEmpty(input))
+    {
+        @input
+    }
+    else if (input.Length <= length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text> [...]</text>
+    }
+}
 @{
-    ViewBag.Title = "Quản lý nhà sản xuất";
+    ViewBag.Title = "Quản lý nhà sản xuất";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<br /><br /><br /><br />
 <div class="container">
-    <h2>Quản lý nhà sản xuất</h2>
+    <h2>Quản lý nhà sản xuất</h2>
 
     <p>
-        @Html.ActionLink("Tạo mới", "Create")
+        @Html.ActionLink("Tạo mới", "CreateSupplier")
     </p>
     <table class="table">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TENNHASANXUAT)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.GHICHU)
-            </th>
+            <th>Tên NSX</th>
+            <th>Ghi chú</th>
             <th></th>
         </tr>
 
@@ -32,7 +41,7 @@
                     @Html.DisplayFor(modelItem => item.TENNHASANXUAT)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GHICHU)
+                    @Truncate(item.GHICHU, 30)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.MANHASANXUAT }) |
@@ -47,7 +56,7 @@
     <!--PagedList-->
     Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
     <div class="page-menu">
-        @Html.PagedListPager(Model, page => Url.Action("Product", new { page = page }))
+        @Html.PagedListPager(Model, page => Url.Action("Supplier", new { page = page }))
     </div>
 
     <style>
@@ -57,9 +66,8 @@
             font-weight: 800;
         }
 
-        td {
+        th, td {
             text-align: center;
         }
     </style>
 </div>
-
