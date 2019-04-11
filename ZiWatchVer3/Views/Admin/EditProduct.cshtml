@@ -1,0 +1,142 @@
+﻿@model ZiWatchVer3.Models.SANPHAM
+
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHỈNH SỬA THÔNG TIN SẢN PHẨM</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>SANPHAM</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MASANPHAM)
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.MASANPHAM, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div style="font: 18px;padding: 5px 0 0 5px"> @Model.MASANPHAM</div>
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TENSANPHAM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENSANPHAM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TENSANPHAM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MADANHMUC, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaDanhMuc")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MANHASANXUAT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaNhaSanXuat")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DONGIA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DONGIA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DONGIA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.HINHANH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Chọn ảnh mới
+                <input type="file" name="fileupload" />
+                <img src="@Url.Content("~/images/"+Model.HINHANH)" width="100" />(Ảnh hiện tại)
+                @ViewBag.Message
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.HINHANH1, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Chọn ảnh mới
+                <input type="file" name="fileupload" />
+                <img src="@Url.Content("~/images/"+Model.HINHANH1)" width="100" />(Ảnh hiện tại)
+                @ViewBag.Message
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HINHANH2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                Chọn ảnh mới
+                <input type="file" name="fileupload" />
+                <img src="@Url.Content("~/images/"+Model.HINHANH2)" width="100" />(Ảnh hiện tại)
+                @ViewBag.Message
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TINHTRANG, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TINHTRANG)
+                    @Html.ValidationMessageFor(model => model.TINHTRANG, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MAMAU, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("MaMau")
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LOAIMAY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LOAIMAY, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LOAIMAY, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MATDONGHO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MATDONGHO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MATDONGHO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DAYDEO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DAYDEO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DAYDEO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KICHCO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KICHCO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KICHCO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Lưu" class="btn btn-default" />    @Html.ActionLink("Trở về", "Index")
+            </div>
+        </div>
+    </div>
+}

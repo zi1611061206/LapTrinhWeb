@@ -48,7 +48,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.HINHANH, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="file" name="file-upload"/>
+                    <input type="file" name="fileupload"/>
                     @ViewBag.message
                 </div>
             </div>
@@ -78,15 +78,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.NGAYCAPNHAT, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <input type="date" name="dtp-date-update"/>
-                    @Html.ValidationMessageFor(model => model.NGAYCAPNHAT, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
+            
             <div class="form-group">
                 @Html.LabelFor(model => model.MAMAU, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">

@@ -1,0 +1,129 @@
+﻿@model ZiWatchVer3.Models.SANPHAM
+
+@{
+    ViewBag.Title = "DetailsProduct";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHI TIẾT SẢN PHẨM</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên sản phẩm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENSANPHAM)
+        </dd>
+
+        <dt>
+            Danh mục:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DANHMUC.TENDANHMUC)
+        </dd>
+
+        <dt>
+            NSX:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHASANXUAT.TENNHASANXUAT)
+        </dd>
+
+        <dt>
+            Giá:
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.DONGIA) VNĐ
+        </dd>
+
+        <dt>
+            Ảnh:
+        </dt>
+
+        <dd>
+            <image src="@Url.Content("~/images/"+Model.HINHANH)" width="100px"></image>
+        </dd>
+
+        <dd>
+            <image src="@Url.Content("~/images/"+Model.HINHANH1)" width="100px"></image>
+        </dd>
+
+        <dd>
+            <image src="@Url.Content("~/images/"+Model.HINHANH2)" width="100px"></image>
+        </dd>
+
+        <dt>
+            Tình trạng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TINHTRANG)
+        </dd>
+
+        <dt>
+            Ngày cập nhật:
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}", Model.NGAYCAPNHAT)
+        </dd>
+
+        <dt>
+            Lượt xem:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LUOTXEM)
+        </dd>
+
+        <dt>
+            Màu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC.TENMAU)
+        </dd>
+
+        <dt>
+            Loại máy:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAIMAY)
+        </dd>
+
+        <dt>
+            Mặt đồng hồ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATDONGHO)
+        </dd>
+
+        <dt>
+            Dây đeo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAYDEO)
+        </dd>
+
+        <dt>
+            Kích cỡ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KICHCO) mm
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Trở về", "Product")
+</p>

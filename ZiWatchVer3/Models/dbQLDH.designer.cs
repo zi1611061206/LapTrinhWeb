@@ -1796,7 +1796,7 @@ namespace ZiWatchVer3.Models
 		
 		private bool _TINHTRANG;
 		
-		private System.DateTime _NGAYCAPNHAT;
+		private System.Nullable<System.DateTime> _NGAYCAPNHAT;
 		
 		private System.Nullable<int> _LUOTXEM;
 		
@@ -1840,7 +1840,7 @@ namespace ZiWatchVer3.Models
     partial void OnHINHANH2Changed();
     partial void OnTINHTRANGChanging(bool value);
     partial void OnTINHTRANGChanged();
-    partial void OnNGAYCAPNHATChanging(System.DateTime value);
+    partial void OnNGAYCAPNHATChanging(System.Nullable<System.DateTime> value);
     partial void OnNGAYCAPNHATChanged();
     partial void OnLUOTXEMChanging(System.Nullable<int> value);
     partial void OnLUOTXEMChanged();
@@ -2053,8 +2053,8 @@ namespace ZiWatchVer3.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYCAPNHAT", DbType="DateTime NOT NULL")]
-		public System.DateTime NGAYCAPNHAT
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NGAYCAPNHAT", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NGAYCAPNHAT
 		{
 			get
 			{

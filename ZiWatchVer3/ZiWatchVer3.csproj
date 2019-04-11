@@ -668,6 +668,9 @@
     <Content Include="Views\Admin\CreateCustomer.cshtml" />
     <Content Include="Views\Admin\CreateSlider.cshtml" />
     <Content Include="Views\Admin\CreateContact.cshtml" />
+    <Content Include="Views\Admin\DetailsProduct.cshtml" />
+    <Content Include="Views\Admin\DeleteProduct.cshtml" />
+    <Content Include="Views\Admin\EditProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
