@@ -3,21 +3,21 @@
     @if (Session["Taikhoan"] == null)
     {
         <a href="@Url.Action("Login","User")" class="flex-c-m trans-04 p-lr-25">
-            Login
+            Đăng nhập
         </a>
 
         <a href="@Url.Action("Register","User")" class="flex-c-m trans-04 p-lr-25">
-            Register
+            Đăng ký
         </a>
     }
     else
     {
         <a href="#" class="flex-c-m trans-04 p-lr-25">
-            Xin Chào @Session["HoTen"]
+            Xin chào bạn!
         </a>
 
         <a href="@Url.Action("Logout","User")" class="flex-c-m trans-04 p-lr-25">
-            Log out
+            Đăng xuất
         </a>
     }
 </div>

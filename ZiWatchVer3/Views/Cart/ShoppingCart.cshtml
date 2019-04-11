@@ -1,39 +1,46 @@
 ﻿@using ZiWatchVer3.Models
 @model List<TheOrder>
 
-    @{
-        ViewBag.Title = "Shopping Cart";
-        Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
-    }
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
+}
 <style>
-    td,th{
+    td, th {
         text-align: center;
     }
+
     .column-id {
         width: 60px;
     }
+
     .column-pic, column-price, column-total, column-price, column-total, column-name {
         width: 100px;
     }
-    .column-update{
+
+    .column-update {
         width: 100px;
         align-items: center;
     }
-    .column-amount,column-detail,column-delete {
+
+    .column-amount, column-detail, column-delete {
         width: 70px;
     }
+
     #nud-amount {
         width: 50px;
         background-color: yellow;
         text-align: center;
         color: #00ff21
     }
+
     #btn-update {
-        background-color: #767575; 
-        color: white; 
-        border-radius: 15px; 
+        background-color: #767575;
+        color: white;
+        border-radius: 15px;
         width: 90px
     }
+
     .pay {
         background-color: rgba(0,0,0,0.19);
         border-radius: 15px;
@@ -52,31 +59,32 @@
         .pay:hover {
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
         }
+    .fontt{
+        font-family: Arial;
+    }
 </style>
 
-<body>
-    <br /><br /><br />
-    <!-- Shoping Cart -->
-    <form class="bg0 p-t-75 p-b-85">
-        <div class="container">
-            <div class="row">
-                <!-- Show Cart -->
-                <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
-                    <div class="m-l-25 m-r--38 m-lr-0-xl">
-                        <!-- Table Cart -->
-                        <div class="wrap-table-shopping-cart">
-                            <table class="table-shopping-cart">
-                                <tr class="table_head">
-                                    <th class="column-id">Mã Sản Phẩm</th>
-                                    <th class="column-pic"></th>
-                                    <th class="column-name">Tên Sản Phẩm</th>
-                                    <th class="column-amount">Số Lượng</th>
-                                    <th class="column-price">Đơn Giá</th>
-                                    <th class="column-total">Thành Tiền</th>
-                                    <th class="column-update">@Html.ActionLink("Dọn dẹp giỏ hàng","ClearCart")</th>
-                                </tr>
-                                @foreach (var item in Model)
-                                {
+<!-- Shoping Cart -->
+<form class="bg0 p-t-75 p-b-85">
+    <div class="container">
+        <div class="row">
+            <!-- Show Cart -->
+            <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+                <div class="m-l-25 m-r--38 m-lr-0-xl">
+                    <!-- Table Cart -->
+                    <div class="wrap-table-shopping-cart">
+                        <table class="table-shopping-cart">
+                            <tr class="table_head">
+                                <th class="column-id">Mã Sản Phẩm</th>
+                                <th class="column-pic"></th>
+                                <th class="column-name">Tên Sản Phẩm</th>
+                                <th class="column-amount">Số Lượng</th>
+                                <th class="column-price">Đơn Giá</th>
+                                <th class="column-total">Thành Tiền</th>
+                                <th class="column-update">@Html.ActionLink("Dọn dẹp giỏ hàng", "ClearCart")</th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
                                 <tr class="table_row">
                                     <td class="column-id">@item.MaSanPham</td>
                                     <td class="column-pic"><img src="~/images/@item.HinhAnh" alt="@item.TenSanPham" style="width: 90px"></td>
@@ -95,57 +103,56 @@
                                         </td>
                                     }
                                 </tr>
-                                }
-                            </table>
-                        </div>
+                            }
+                        </table>
                     </div>
                 </div>
+            </div>
 
-                <!-- Total Cart -->
-                <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
-                    <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-                        <h4 class="mtext-109 cl2 p-b-30">
-                            Cart Totals
-                        </h4>
+            <!-- Total Cart -->
+            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+                <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
+                    <h4 class="cl2 p-b-30 fontt">
+                        GIỎ HÀNG
+                    </h4>
 
-                        <div class="flex-w flex-t bor12 p-b-13">
-                            <div class="size-301">
-                                <span class="stext-110 cl2">
-                                    Tổng số sản phẩm: @ViewBag.Num
-                                </span>
-                            </div>
+                    <div class="flex-w flex-t bor12 p-b-13">
+                        <div class="size-301">
+                            <span class="cl2 fontt">
+                                Tổng số sản phẩm: @ViewBag.Num
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="flex-w flex-t p-t-27 p-b-33">
+                        <div class="size-208">
+                            <span class="cl2 fontt">
+                                Tổng tiền:
+                            </span>
                         </div>
 
-                        <div class="flex-w flex-t p-t-27 p-b-33">
-                            <div class="size-208">
-                                <span class="mtext-101 cl2">
-                                    Tổng tiền:
-                                </span>
-                            </div>
-
-                            <div class="size-209 p-t-1">
-                                <span class="mtext-110 cl2">
-                                    @String.Format("{0:0,0}", ViewBag.Price)
-                                </span>
-                            </div>
+                        <div class="size-209 p-t-1">
+                            <span class="mtext-110 cl2">
+                                @String.Format("{0:0,0}", ViewBag.Price)
+                            </span>
                         </div>
+                    </div>
 
-                        <div class="pay">
-                            @Html.ActionLink("Đặt hàng","Order","Cart")
-                        </div>
+                    <div class="pay">
+                        @Html.ActionLink("Đặt hàng", "Order", "Cart")
                     </div>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
+</form>
 
-    <script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function () {
             $("#pay").click(function () {
                 var url = '@Url.Action("Pay", "Cart")';
                 window.location.assign(url);
             });
         });
-    </script>
-</body>    
+</script>
 

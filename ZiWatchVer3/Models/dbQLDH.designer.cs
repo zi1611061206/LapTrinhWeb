@@ -51,15 +51,15 @@ namespace ZiWatchVer3.Models
     partial void InsertNHASANXUAT(NHASANXUAT instance);
     partial void UpdateNHASANXUAT(NHASANXUAT instance);
     partial void DeleteNHASANXUAT(NHASANXUAT instance);
-    partial void InsertQUANTRIVIEN(QUANTRIVIEN instance);
-    partial void UpdateQUANTRIVIEN(QUANTRIVIEN instance);
-    partial void DeleteQUANTRIVIEN(QUANTRIVIEN instance);
     partial void InsertSANPHAM(SANPHAM instance);
     partial void UpdateSANPHAM(SANPHAM instance);
     partial void DeleteSANPHAM(SANPHAM instance);
     partial void InsertSLIDER(SLIDER instance);
     partial void UpdateSLIDER(SLIDER instance);
     partial void DeleteSLIDER(SLIDER instance);
+    partial void InsertQUANTRIVIEN(QUANTRIVIEN instance);
+    partial void UpdateQUANTRIVIEN(QUANTRIVIEN instance);
+    partial void DeleteQUANTRIVIEN(QUANTRIVIEN instance);
     #endregion
 		
 		public dbQLDHDataContext() : 
@@ -148,14 +148,6 @@ namespace ZiWatchVer3.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<QUANTRIVIEN> QUANTRIVIENs
-		{
-			get
-			{
-				return this.GetTable<QUANTRIVIEN>();
-			}
-		}
-		
 		public System.Data.Linq.Table<SANPHAM> SANPHAMs
 		{
 			get
@@ -169,6 +161,14 @@ namespace ZiWatchVer3.Models
 			get
 			{
 				return this.GetTable<SLIDER>();
+			}
+		}
+		
+		public System.Data.Linq.Table<QUANTRIVIEN> QUANTRIVIENs
+		{
+			get
+			{
+				return this.GetTable<QUANTRIVIEN>();
 			}
 		}
 	}
@@ -1614,164 +1614,6 @@ namespace ZiWatchVer3.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QUANTRIVIEN")]
-	public partial class QUANTRIVIEN : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MAQUANTRI;
-		
-		private string _HOTEN;
-		
-		private string _TENDANGNHAP;
-		
-		private string _MATKHAU;
-		
-		private string _ANHDAIDIEN;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMAQUANTRIChanging(int value);
-    partial void OnMAQUANTRIChanged();
-    partial void OnHOTENChanging(string value);
-    partial void OnHOTENChanged();
-    partial void OnTENDANGNHAPChanging(string value);
-    partial void OnTENDANGNHAPChanged();
-    partial void OnMATKHAUChanging(string value);
-    partial void OnMATKHAUChanged();
-    partial void OnANHDAIDIENChanging(string value);
-    partial void OnANHDAIDIENChanged();
-    #endregion
-		
-		public QUANTRIVIEN()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAQUANTRI", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MAQUANTRI
-		{
-			get
-			{
-				return this._MAQUANTRI;
-			}
-			set
-			{
-				if ((this._MAQUANTRI != value))
-				{
-					this.OnMAQUANTRIChanging(value);
-					this.SendPropertyChanging();
-					this._MAQUANTRI = value;
-					this.SendPropertyChanged("MAQUANTRI");
-					this.OnMAQUANTRIChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HOTEN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string HOTEN
-		{
-			get
-			{
-				return this._HOTEN;
-			}
-			set
-			{
-				if ((this._HOTEN != value))
-				{
-					this.OnHOTENChanging(value);
-					this.SendPropertyChanging();
-					this._HOTEN = value;
-					this.SendPropertyChanged("HOTEN");
-					this.OnHOTENChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENDANGNHAP", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string TENDANGNHAP
-		{
-			get
-			{
-				return this._TENDANGNHAP;
-			}
-			set
-			{
-				if ((this._TENDANGNHAP != value))
-				{
-					this.OnTENDANGNHAPChanging(value);
-					this.SendPropertyChanging();
-					this._TENDANGNHAP = value;
-					this.SendPropertyChanged("TENDANGNHAP");
-					this.OnTENDANGNHAPChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MATKHAU", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string MATKHAU
-		{
-			get
-			{
-				return this._MATKHAU;
-			}
-			set
-			{
-				if ((this._MATKHAU != value))
-				{
-					this.OnMATKHAUChanging(value);
-					this.SendPropertyChanging();
-					this._MATKHAU = value;
-					this.SendPropertyChanged("MATKHAU");
-					this.OnMATKHAUChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ANHDAIDIEN", DbType="VarChar(50)")]
-		public string ANHDAIDIEN
-		{
-			get
-			{
-				return this._ANHDAIDIEN;
-			}
-			set
-			{
-				if ((this._ANHDAIDIEN != value))
-				{
-					this.OnANHDAIDIENChanging(value);
-					this.SendPropertyChanging();
-					this._ANHDAIDIEN = value;
-					this.SendPropertyChanged("ANHDAIDIEN");
-					this.OnANHDAIDIENChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SANPHAM")]
 	public partial class SANPHAM : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2454,6 +2296,164 @@ namespace ZiWatchVer3.Models
 					this._TIEUDE2 = value;
 					this.SendPropertyChanged("TIEUDE2");
 					this.OnTIEUDE2Changed();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.QUANTRIVIEN")]
+	public partial class QUANTRIVIEN : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MAQUANTRI;
+		
+		private string _HOTEN;
+		
+		private string _TENDANGNHAP;
+		
+		private string _MATKHAU;
+		
+		private string _ANHDAIDIEN;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMAQUANTRIChanging(int value);
+    partial void OnMAQUANTRIChanged();
+    partial void OnHOTENChanging(string value);
+    partial void OnHOTENChanged();
+    partial void OnTENDANGNHAPChanging(string value);
+    partial void OnTENDANGNHAPChanged();
+    partial void OnMATKHAUChanging(string value);
+    partial void OnMATKHAUChanged();
+    partial void OnANHDAIDIENChanging(string value);
+    partial void OnANHDAIDIENChanged();
+    #endregion
+		
+		public QUANTRIVIEN()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAQUANTRI", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MAQUANTRI
+		{
+			get
+			{
+				return this._MAQUANTRI;
+			}
+			set
+			{
+				if ((this._MAQUANTRI != value))
+				{
+					this.OnMAQUANTRIChanging(value);
+					this.SendPropertyChanging();
+					this._MAQUANTRI = value;
+					this.SendPropertyChanged("MAQUANTRI");
+					this.OnMAQUANTRIChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HOTEN", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string HOTEN
+		{
+			get
+			{
+				return this._HOTEN;
+			}
+			set
+			{
+				if ((this._HOTEN != value))
+				{
+					this.OnHOTENChanging(value);
+					this.SendPropertyChanging();
+					this._HOTEN = value;
+					this.SendPropertyChanged("HOTEN");
+					this.OnHOTENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENDANGNHAP", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string TENDANGNHAP
+		{
+			get
+			{
+				return this._TENDANGNHAP;
+			}
+			set
+			{
+				if ((this._TENDANGNHAP != value))
+				{
+					this.OnTENDANGNHAPChanging(value);
+					this.SendPropertyChanging();
+					this._TENDANGNHAP = value;
+					this.SendPropertyChanged("TENDANGNHAP");
+					this.OnTENDANGNHAPChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MATKHAU", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string MATKHAU
+		{
+			get
+			{
+				return this._MATKHAU;
+			}
+			set
+			{
+				if ((this._MATKHAU != value))
+				{
+					this.OnMATKHAUChanging(value);
+					this.SendPropertyChanging();
+					this._MATKHAU = value;
+					this.SendPropertyChanged("MATKHAU");
+					this.OnMATKHAUChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ANHDAIDIEN", DbType="VarChar(50)")]
+		public string ANHDAIDIEN
+		{
+			get
+			{
+				return this._ANHDAIDIEN;
+			}
+			set
+			{
+				if ((this._ANHDAIDIEN != value))
+				{
+					this.OnANHDAIDIENChanging(value);
+					this.SendPropertyChanging();
+					this._ANHDAIDIEN = value;
+					this.SendPropertyChanged("ANHDAIDIEN");
+					this.OnANHDAIDIENChanged();
 				}
 			}
 		}

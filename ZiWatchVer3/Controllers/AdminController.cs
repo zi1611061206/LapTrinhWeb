@@ -17,7 +17,11 @@ namespace ZiWatchVer3.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            if(Session["TaiKhoanAdmin"]!=null)
+            {
+                return View();
+            }
+            return RedirectToAction("Login", "Manager");
         }
 
         //Product
@@ -54,7 +58,7 @@ namespace ZiWatchVer3.Controllers
                 if (ModelState.IsValid)
                 {
                     var fileName = Path.GetFileName(fileUpload.FileName);
-                    
+
                     var path = Path.Combine(Server.MapPath("~/images"), fileName);
                     if (System.IO.File.Exists(path))
                     {
@@ -79,7 +83,7 @@ namespace ZiWatchVer3.Controllers
         {
             SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASANPHAM == id);
             ViewBag.MaSanPham = sp.MASANPHAM;
-            if(sp==null)
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -92,7 +96,7 @@ namespace ZiWatchVer3.Controllers
         {
             SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASANPHAM == id);
             ViewBag.MaSanPham = sp.MASANPHAM;
-            if(sp==null)
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -104,12 +108,12 @@ namespace ZiWatchVer3.Controllers
         public ActionResult EditProduct(int id)
         {
             SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASANPHAM == id);
-            if(sp==null)
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            ViewBag.MaDanhMuc = new SelectList(data.DANHMUCs.ToList().OrderBy(n => n.TENDANHMUC), "MaDanhMuc", "TenDanhMuc",sp.MADANHMUC);
+            ViewBag.MaDanhMuc = new SelectList(data.DANHMUCs.ToList().OrderBy(n => n.TENDANHMUC), "MaDanhMuc", "TenDanhMuc", sp.MADANHMUC);
             ViewBag.MaNhaSanXuat = new SelectList(data.NHASANXUATs.ToList().OrderBy(n => n.TENNHASANXUAT), "MaNhaSanXuat", "TenNhaSanXuat", sp.MANHASANXUAT);
             ViewBag.MaMau = new SelectList(data.MAUSACs.ToList().OrderBy(n => n.TENMAU), "MaMau", "TenMau", sp.MAMAU);
             return View(sp);
@@ -120,7 +124,7 @@ namespace ZiWatchVer3.Controllers
         {
             SANPHAM sp = data.SANPHAMs.SingleOrDefault(n => n.MASANPHAM == id);
             ViewBag.MaSanPham = sp.MASANPHAM;
-            if(sp==null)
+            if (sp == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -257,7 +261,7 @@ namespace ZiWatchVer3.Controllers
         {
             return View();
         }
-        
+
         //Customer
         public ActionResult Customer(int? page)
         {
@@ -340,29 +344,5 @@ namespace ZiWatchVer3.Controllers
             return View();
         }
 
-        //Login
-        [HttpGet]
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(FormCollection form)
-        {
-            var username = form["username"];
-            var password = form["password"];
-            QUANTRIVIEN ad = data.QUANTRIVIENs.SingleOrDefault(n => n.TENDANGNHAP == username && n.MATKHAU == password);
-            if (ad != null)
-            {
-                Session["TaiKhoanQuanTri"] = ad;
-                return RedirectToAction("Index", "Admin");
-            }
-            else
-            {
-                ViewBag.Message = "Tên đăng nhập hoặc mật khẩu không đúng";
-            }
-            return View();
-        }
     }
 }

@@ -1,12 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_MyLayoutPage.cshtml";
+    ViewBag.Title = "Đăng nhập quản trị";
+    Layout = null;
 }
 
 <style>
     .bodyLogin {
-        background-image: url('../../images/my-icons/background2.png');
+        background-image: url('../../images/my-icons/background-admin (3).jpg');
+        height: 100%;
         margin-bottom: 0;
         overflow: auto;
     }
@@ -15,7 +16,7 @@
         background-color: #c1c1c1;
         margin: 20px 30% 30px 30%;
         width: 500px;
-        height: 270px;
+        height: 400px;
         border-radius: 10%;
         padding-top: 30px;
         color: black;
@@ -52,12 +53,12 @@
     <div class="login">
         <h4 style="color: red; text-align: center">@ViewBag.Thongbao</h4>
         <table>
-            <h3 style="text-align: center">ĐĂNG NHẬP</h3>
+            <h3 style="text-align: center">ĐĂNG NHẬP QUẢN TRỊ</h3>
             @using (Html.BeginForm())
             {
                 @Html.ValidationSummary(true)
                 <tr style="height: 40px">
-                    <td>Email: </td>
+                    <td>Tên đăng nhập: </td>
                     <td>@Html.TextBox("Email") @ViewData["Loi1"]</td>
                 </tr>
                 <tr style="height: 40px">
@@ -72,5 +73,8 @@
         </table>
     </div>
 </div>
+
+
+
 
 

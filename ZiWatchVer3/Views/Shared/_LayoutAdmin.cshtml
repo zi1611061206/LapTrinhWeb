@@ -52,6 +52,8 @@
                     <div class="left-top-bar">
                         ziwatch@gmail.com | 0943 144 178
                     </div>
+
+                    @Html.Action("AccountAdmin", "Manager")
                 </div>
             </div>
 
@@ -85,12 +87,13 @@
                             <li class="data-table">
                                 <a href="@Url.Action("Customer","Admin")">Khách hàng</a>
                             </li>
-                            <li class="data-table">
+                            <!--chưa làm-->
+                            @*<li class="data-table">
                                 <a href="@Url.Action("Order","Admin")">Đơn hàng</a>
                             </li>
                             <li class="data-table">
                                 <a href="@Url.Action("OrderDetail","Admin")">Chi tiết đơn hàng</a>
-                            </li>
+                            </li>*@
                             <li class="data-table">
                                 <a href="@Url.Action("Slider","Admin")">Slider Edit</a>
                             </li>
@@ -127,6 +130,8 @@
                         ziwatch@gmail.com | 0943 144 178
                     </div>
                 </li>
+
+                @Html.Action("AccountAdmin", "Manager")
             </ul>
 
             <ul class="main-menu-m">
@@ -148,12 +153,12 @@
                 <li class="data-table">
                     <a href="@Url.Action("Customer","Admin")">Khách hàng</a>
                 </li>
-                <li class="data-table">
+                @*<li class="data-table">
                     <a href="@Url.Action("Order","Admin")">Đơn hàng</a>
                 </li>
                 <li class="data-table">
                     <a href="@Url.Action("OrderDetail","Admin")">Chi tiết đơn hàng</a>
-                </li>
+                </li>*@
                 <li class="data-table">
                     <a href="@Url.Action("Slider","Admin")">Slider Edit</a>
                 </li>
@@ -163,6 +168,7 @@
             </ul>
         </div>
     </header>
+
     <br /><br /><br /><br />
     <div class="container">
         @RenderBody()

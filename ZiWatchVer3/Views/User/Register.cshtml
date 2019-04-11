@@ -10,6 +10,7 @@
         margin-bottom: 0;
         overflow: auto;
     }
+
     .register {
         background-color: #c1c1c1;
         margin: 20px 30% 30px 30%;
@@ -23,9 +24,11 @@
         resize: vertical;
         max-height: 550px;
     }
+
     table {
         margin: 10px 18% 10px 18%;
     }
+
     .button {
         background-color: #4CAF50;
         border: none;
@@ -40,55 +43,53 @@
         -webkit-transition-duration: 0.4s;
         transition-duration: 0.4s;
     }
+
         .button:hover {
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
         }
-    
 </style>
 
-<br /><br /><br /><br />
-<div>
-    <div class="bodyRegister">
-        <div class="register">
-            <table>
-                <h2 style="text-align: center">ĐĂNG KÝ THÀNH VIÊN</h2>
-                @using (Html.BeginForm())
-                {
-                    @Html.ValidationSummary(true)
-                    <tr style="height: 40px">
-                        <td>Họ tên: </td>
-                        <td>@Html.TextBox("FullName") @ViewData["Loi1"]</td>
-                    </tr>
-                    <tr style="height: 40px">
-                        <td>Email: </td>
-                        <td>@Html.TextBox("Email") @ViewData["Loi2"] @ViewData["Loi2.1"]</td>
-                    </tr>
-                    <tr style="height: 40px">
-                        <td>Mật khẩu: </td>
-                        <td>@Html.Password("Password") @ViewData["Loi3"]</td>
-                    </tr>
-                    <tr style="height: 40px">
-                        <td>Nhập lại mật khẩu: </td>
-                        <td>@Html.Password("ReEnterPassword") @ViewData["Loi4"] @ViewData["Loi4.1"]</td>
-                    </tr>
-                    <tr style="height: 40px">
-                        <td>Giới tính: </td>
-                        <td>@Html.TextBox("Sex")</td>
-                    </tr>
-                    <tr style="height: 40px">
-                        <td>Địa chỉ: </td>
-                        <td>@Html.TextBox("Address") @ViewData["Loi6"]</td>
-                    </tr>
-                    <tr style="height: 40px">
-                        <td>Số điện thoại: </td>
-                        <td>@Html.TextBox("PhoneNumber") @ViewData["Loi7"]</td>
-                    </tr>
-                    <tr style="height: 40px">
-                        <td></td>
-                        <td><input type="submit" class="button" value="Đăng ký" /></td>
-                    </tr>
-                }
-            </table>
-        </div>
+<div class="bodyRegister">
+    <div class="register">
+        <table>
+            <h2 style="text-align: center">ĐĂNG KÝ THÀNH VIÊN</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <tr style="height: 40px">
+                    <td>Họ tên: </td>
+                    <td>@Html.TextBox("FullName") @ViewData["Loi1"]</td>
+                </tr>
+                <tr style="height: 40px">
+                    <td>Email: </td>
+                    <td>@Html.TextBox("Email") @ViewData["Loi2"] @ViewData["Loi2.1"]</td>
+                </tr>
+                <tr style="height: 40px">
+                    <td>Mật khẩu: </td>
+                    <td>@Html.Password("Password") @ViewData["Loi3"]</td>
+                </tr>
+                <tr style="height: 40px">
+                    <td>Nhập lại mật khẩu: </td>
+                    <td>@Html.Password("ReEnterPassword") @ViewData["Loi4"] @ViewData["Loi4.1"]</td>
+                </tr>
+                <tr style="height: 40px">
+                    <td>Giới tính: </td>
+                    <td>@Html.TextBox("Sex")</td>
+                </tr>
+                <tr style="height: 40px">
+                    <td>Địa chỉ: </td>
+                    <td>@Html.TextBox("Address") @ViewData["Loi6"]</td>
+                </tr>
+                <tr style="height: 40px">
+                    <td>Số điện thoại: </td>
+                    <td>@Html.TextBox("PhoneNumber") @ViewData["Loi7"]</td>
+                </tr>
+                <tr style="height: 40px">
+                    <td></td>
+                    <td><input type="submit" class="button" value="Đăng ký" /></td>
+                </tr>
+            }
+        </table>
     </div>
 </div>
+

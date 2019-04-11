@@ -1,0 +1,18 @@
+﻿<div class="right-top-bar flex-w h-full">
+    @if (Session["TaiKhoanAdmin"] == null)
+    {
+        <a href="@Url.Action("Login","Manager")" class="flex-c-m trans-04 p-lr-25">
+            Đăng nhập
+        </a>
+    }
+    else
+    {
+        <a href="#" class="flex-c-m trans-04 p-lr-25">
+            Chào mừng đến với trang quản trị
+        </a>
+
+        <a href="@Url.Action("Logout","Manager")" class="flex-c-m trans-04 p-lr-25">
+            Đăng xuất
+        </a>
+    }
+</div>
