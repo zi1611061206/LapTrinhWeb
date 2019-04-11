@@ -33,6 +33,9 @@ namespace ZiWatchVer3.Models
     partial void InsertCHITIETDONHANG(CHITIETDONHANG instance);
     partial void UpdateCHITIETDONHANG(CHITIETDONHANG instance);
     partial void DeleteCHITIETDONHANG(CHITIETDONHANG instance);
+    partial void InsertCONTACT(CONTACT instance);
+    partial void UpdateCONTACT(CONTACT instance);
+    partial void DeleteCONTACT(CONTACT instance);
     partial void InsertDANHMUC(DANHMUC instance);
     partial void UpdateDANHMUC(DANHMUC instance);
     partial void DeleteDANHMUC(DANHMUC instance);
@@ -411,8 +414,10 @@ namespace ZiWatchVer3.Models
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CONTACT")]
-	public partial class CONTACT
+	public partial class CONTACT : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _MA;
 		
@@ -430,11 +435,34 @@ namespace ZiWatchVer3.Models
 		
 		private string _TAIKHOANNGANHANG;
 		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMAChanging(int value);
+    partial void OnMAChanged();
+    partial void OnTENSHOPChanging(string value);
+    partial void OnTENSHOPChanged();
+    partial void OnDIACHIChanging(string value);
+    partial void OnDIACHIChanged();
+    partial void OnSODIENTHOAIChanging(string value);
+    partial void OnSODIENTHOAIChanged();
+    partial void OnEMAILChanging(string value);
+    partial void OnEMAILChanged();
+    partial void OnMASOTHUEChanging(string value);
+    partial void OnMASOTHUEChanged();
+    partial void OnQUANLYChanging(string value);
+    partial void OnQUANLYChanged();
+    partial void OnTAIKHOANNGANHANGChanging(string value);
+    partial void OnTAIKHOANNGANHANGChanged();
+    #endregion
+		
 		public CONTACT()
 		{
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MA", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MA", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int MA
 		{
 			get
@@ -445,7 +473,11 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._MA != value))
 				{
+					this.OnMAChanging(value);
+					this.SendPropertyChanging();
 					this._MA = value;
+					this.SendPropertyChanged("MA");
+					this.OnMAChanged();
 				}
 			}
 		}
@@ -461,7 +493,11 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._TENSHOP != value))
 				{
+					this.OnTENSHOPChanging(value);
+					this.SendPropertyChanging();
 					this._TENSHOP = value;
+					this.SendPropertyChanged("TENSHOP");
+					this.OnTENSHOPChanged();
 				}
 			}
 		}
@@ -477,7 +513,11 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._DIACHI != value))
 				{
+					this.OnDIACHIChanging(value);
+					this.SendPropertyChanging();
 					this._DIACHI = value;
+					this.SendPropertyChanged("DIACHI");
+					this.OnDIACHIChanged();
 				}
 			}
 		}
@@ -493,7 +533,11 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._SODIENTHOAI != value))
 				{
+					this.OnSODIENTHOAIChanging(value);
+					this.SendPropertyChanging();
 					this._SODIENTHOAI = value;
+					this.SendPropertyChanged("SODIENTHOAI");
+					this.OnSODIENTHOAIChanged();
 				}
 			}
 		}
@@ -509,7 +553,11 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._EMAIL != value))
 				{
+					this.OnEMAILChanging(value);
+					this.SendPropertyChanging();
 					this._EMAIL = value;
+					this.SendPropertyChanged("EMAIL");
+					this.OnEMAILChanged();
 				}
 			}
 		}
@@ -525,7 +573,11 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._MASOTHUE != value))
 				{
+					this.OnMASOTHUEChanging(value);
+					this.SendPropertyChanging();
 					this._MASOTHUE = value;
+					this.SendPropertyChanged("MASOTHUE");
+					this.OnMASOTHUEChanged();
 				}
 			}
 		}
@@ -541,7 +593,11 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._QUANLY != value))
 				{
+					this.OnQUANLYChanging(value);
+					this.SendPropertyChanging();
 					this._QUANLY = value;
+					this.SendPropertyChanged("QUANLY");
+					this.OnQUANLYChanged();
 				}
 			}
 		}
@@ -557,8 +613,32 @@ namespace ZiWatchVer3.Models
 			{
 				if ((this._TAIKHOANNGANHANG != value))
 				{
+					this.OnTAIKHOANNGANHANGChanging(value);
+					this.SendPropertyChanging();
 					this._TAIKHOANNGANHANG = value;
+					this.SendPropertyChanged("TAIKHOANNGANHANG");
+					this.OnTAIKHOANNGANHANGChanged();
 				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

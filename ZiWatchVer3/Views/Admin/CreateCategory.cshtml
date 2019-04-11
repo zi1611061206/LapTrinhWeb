@@ -8,7 +8,7 @@
 <div class="container">
     <h2>THÊM MỚI DANH MỤC</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("CreateCategory", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 

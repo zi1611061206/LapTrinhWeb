@@ -8,7 +8,7 @@
 <div class="container">
     <h2>THÊM MÀU MỚI</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("CreateColor", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 

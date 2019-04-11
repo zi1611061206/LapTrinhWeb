@@ -19,7 +19,7 @@ namespace ZiWatchVer3.Controllers
         {
             return View();
         }
-        
+
         //Product
         public ActionResult Product(int? page)
         {
@@ -85,6 +85,19 @@ namespace ZiWatchVer3.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateCategory(DANHMUC dm)
+        {
+            if (ModelState.IsValid)
+            {
+                data.DANHMUCs.InsertOnSubmit(dm);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("Category");
+        }
+
         //Supplier
         public ActionResult Supplier(int? page)
         {
@@ -98,6 +111,19 @@ namespace ZiWatchVer3.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateSupplier(NHASANXUAT nsx)
+        {
+            if (ModelState.IsValid)
+            {
+                data.NHASANXUATs.InsertOnSubmit(nsx);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("Supplier");
+        }
+
         //Color
         public ActionResult Color(int? page)
         {
@@ -111,6 +137,19 @@ namespace ZiWatchVer3.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateColor(MAUSAC ms)
+        {
+            if (ModelState.IsValid)
+            {
+                data.MAUSACs.InsertOnSubmit(ms);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("Color");
+        }
+
         //Adminstrator
         public ActionResult Adminstrator(int? page)
         {
@@ -124,6 +163,7 @@ namespace ZiWatchVer3.Controllers
         {
             return View();
         }
+        
         //Customer
         public ActionResult Customer(int? page)
         {
@@ -135,9 +175,22 @@ namespace ZiWatchVer3.Controllers
         [HttpGet]
         public ActionResult CreateCustomer()
         {
-            ViewBag.GioiTinh = new SelectList(new[] { new { ID="0", Name="Nam" }, new { ID="1", Name="Nữ" }}, "ID", "Name", 1);
+            ViewBag.GioiTinh = new SelectList(new[] { new { ID = "0", Name = "Nam" }, new { ID = "1", Name = "Nữ" } }, "ID", "Name", 1);
             return View();
         }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateCustomer(KHACHHANG kh)
+        {
+            if (ModelState.IsValid)
+            {
+                data.KHACHHANGs.InsertOnSubmit(kh);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("Customer");
+        }
+
         //Order
         //OrderDetail
         //Slider
@@ -153,6 +206,32 @@ namespace ZiWatchVer3.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult CreateSlider(SLIDER sl, HttpPostedFileBase fileUpload)
+        {
+            if (fileUpload == null)
+            {
+                ViewBag.Message = "Vui lòng chọn hình nền";
+                return View();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    var fileName = Path.GetFileName(fileUpload.FileName);
+                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    fileUpload.SaveAs(path);
+                    sl.HINHANH = fileName;
+                    data.SLIDERs.InsertOnSubmit(sl);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("Slider");
+            }
+
+        }
+
         //Contact
         public ActionResult Contact(int? page)
         {
@@ -166,6 +245,7 @@ namespace ZiWatchVer3.Controllers
         {
             return View();
         }
+
         //Login
         [HttpGet]
         public ActionResult Login()

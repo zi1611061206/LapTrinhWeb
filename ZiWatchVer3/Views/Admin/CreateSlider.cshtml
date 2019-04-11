@@ -8,7 +8,7 @@
 <div class="container">
     <h2>THÊM MỚI TRANG SLIDE</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("CreateSlider", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -18,8 +18,8 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.HINHANH, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.HINHANH, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.HINHANH, "", new { @class = "text-danger" })
+                    <input type="file" name="fileupload" />
+                    @ViewBag.Message
                 </div>
             </div>
 
