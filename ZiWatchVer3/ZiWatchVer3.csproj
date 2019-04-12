@@ -499,6 +499,8 @@
     <Content Include="plugins\slick-1.8.0\fonts\slick.eot" />
     <Content Include="plugins\slick-1.8.0\fonts\slick.ttf" />
     <Content Include="plugins\slick-1.8.0\fonts\slick.woff" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
